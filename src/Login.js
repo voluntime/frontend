@@ -1,4 +1,5 @@
 // import Stack from '@mui/material/Stack';
+import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import React, { useState } from 'react';
 
@@ -9,7 +10,7 @@ function Login () {
     return (
         <div>
             <div className="login-form">
-                <div className="title">{title}</div>
+                <Typography variant="h2">{title}</Typography>
                 <div className="form">
                     <form>
                         <div classname="input-container" id="name"></div>

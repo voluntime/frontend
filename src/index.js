@@ -53,10 +53,10 @@ const theme = createTheme({
     },
     fontFamily: 'Ubuntu',
     body1: {
-      fontFamily: 'Libre Franklin',
+      fontFamily: 'LibreFranklin',
     },
     body2: {
-      fontFamily: 'Libre Franklin',
+      fontFamily: 'LibreFranklin',
     },
     caption: {
       fontFamily: 'Satisfy',
