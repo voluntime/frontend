@@ -12,6 +12,7 @@ function Profile() {
           <p>Icon</p>
         </Stack>
         <p>Robin Baker</p>
+        <div classname="email"></div>
         <p>Super Volunteer</p>
         <div classname="events">
           <Event />

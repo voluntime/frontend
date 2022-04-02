@@ -2,6 +2,7 @@ import './App.css';
 import Login from './Login';
 import Event from './Event';
 import Profile from './Profile';
+import Post from './Post';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
 import React, { useState } from 'react';
@@ -20,6 +21,9 @@ function Feed() {
         <div classname="events">
           <Event />
         </div>
+        <div>
+
+        </div>
       </Stack>
     </div>
   );
@@ -34,11 +38,11 @@ function App() {
 
   return (
     <div className="wrapper">
-      <h1>Voluntime</h1>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Feed/>} />
-          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/profile" element={<Profile/>} />
+          <Route path="/Post" element={<Post/>} />
         </Routes>
       </BrowserRouter>
     </div>
