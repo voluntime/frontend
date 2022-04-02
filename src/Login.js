@@ -1,15 +1,37 @@
-import Feed from './App';
+// import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import React, { useState } from 'react';
 
-function Login() {
-  return (
-    <div className="Login">
-      <header className="Login-header">
-          <button onClick={Feed}>
-              LOGIN
-          </button>
-      </header>
-    </div>
-  );
+function Login () {
+    const [title, setTitle] = useState("Sign In");
+    const [buttonLabel, setButton] = useState("Login");
+
+    return (
+        <div>
+            <div className="login-form">
+                <div className="title">{title}</div>
+                <div className="form">
+                    <form>
+                        <div classname="input-container" id="name"></div>
+                        <div className="input-container">
+                            <input type="text" name="uname" placeholder="email" required />
+                            {/* {renderErrorMessage("uname")} */}
+                        </div>
+                        <div className="input-container">
+                            <input type="password" name="pass" placeholder="password" required />
+                            {/* {renderErrorMessage("pass")} */}
+                        </div>
+                        <div className="button-container">
+                            <Button onclick={() => setButton("Sign up")}>{buttonLabel}</Button>
+                        </div>
+                        <div className="button-container">
+                            <Button>Sign Up</Button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default Login;

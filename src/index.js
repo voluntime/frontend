@@ -8,7 +8,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Event />
+    <Login />
   </React.StrictMode>,
   document.getElementById('root')
 );
