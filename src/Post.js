@@ -1,12 +1,18 @@
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
+import React, { useCallback } from 'react';
+import {useNavigate} from 'react-router-dom';
 
 function Post() {
+    const navigate = useNavigate();
+    const handleClick = useCallback(() => navigate('/', {replace : true}), [navigate]);
+
     return (
         <div classname="wrapper">
             <Stack>
                 <Stack direction={"row"}>
-                    <p>Icon</p>
+                    <Button onClick={handleClick}><DynamicFeedIcon /></Button>
                     <p>new event</p>
                 </Stack>
                 <p>personal info</p>

@@ -5,24 +5,30 @@ import Profile from './Profile';
 import Post from './Post';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
-import React, { useState } from 'react';
+import Button from '@mui/material/Button';
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import React, { useCallback, useState } from 'react';
 import { Typography } from '@mui/material';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 
 function Feed() {
+  const navigate = useNavigate();
+  const handleClick = useCallback(() => navigate('/Profile', {replace : true}), [navigate]);
+  const AddPost = useCallback(() => navigate('/Post', {replace : true}), [navigate]);
+
   return (
     <div classname="wrapper">
       <Stack>
         <Stack direction={"row"}>
           <Typography variant="h2">hello</Typography>
           <p>Robin Baker</p>
-          <Avatar sx={{ width: 50, height: 50}}>H</Avatar>
+          <Avatar><Button onClick={handleClick}>H</Button></Avatar>
         </Stack>
         <div classname="events">
           <Event />
         </div>
-        <div>
-
+        <div classname="addPost">
+          <Button onClick={AddPost}><AddBoxIcon /></Button>
         </div>
       </Stack>
     </div>
