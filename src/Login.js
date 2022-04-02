@@ -4,20 +4,34 @@ import Button from '@mui/material/Button';
 import SignUp from './SignUp';
 import history from './history';
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-function Login () {
-    {/* TODO need setToken, verify user login */}
-    const [username, setUserName] = useState();
+async function loginUser(credentials) {
+    
+}
+
+function Login ({ setToken }) {
+
+    const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+
+    const handleSubmit = async e => {
+        e.preventDefault();
+        const token = await loginUser({
+            email,
+            password
+        });
+        setToken(token);
+    }
 
     return (
         <div>
             <div className="login-form">
-                <Typography variant="h2">{title}</Typography>
+                <Typography variant="h2">login</Typography>
                 <div className="form">
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="input-container">
-                            <input type="text" name="email" placeholder="email" required onChange={e => setUserName(e.target.value)}/>
+                            <input type="text" name="email" placeholder="email" required onChange={e => setEmail(e.target.value)}/>
                             {/* {renderErrorMessage("email")} */}
                         </div>
                         <div className="input-container">
@@ -36,5 +50,9 @@ function Login () {
         </div>
     );
 }
+
+Login.propTypes = {
+    setToken: PropTypes.func.isRequired
+};
 
 export default Login;

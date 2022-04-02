@@ -68,7 +68,7 @@ const theme = createTheme({
 ReactDOM.render(
   <React.StrictMode>
       <ThemeProvider theme={theme}>
-        <Login />
+        <App />
       </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')

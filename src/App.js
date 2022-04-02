@@ -1,15 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import Login from './Login';
+import Event from './Event';
+import React, { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
+  const [token, setToken] = useState();
+
+  if(!token) {
+    return <Login setToken={setToken} />
+  }
+
   return (
     <div className="Feed">
-      <header className="Feed-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          It's VolunTime BABY!
-        </p>
-      </header>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/event">
+            <Event />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
