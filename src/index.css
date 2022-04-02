@@ -1,13 +1,12 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('./fonts/Ubuntu/Ubuntu-Regular.ttf');
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: 'Satisfy';
+  src: url('./fonts/Satisfy/Satisfy-Regular.ttf');
+}
+@font-face {
+  font-family: 'LibreFranklin';
+  src: url('./fonts/Libre_Franklin/static/LibreFranklin-Regular.ttf');
 }

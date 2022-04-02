@@ -1,4 +1,5 @@
 // import Stack from '@mui/material/Stack';
+import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import SignUp from './SignUp';
 import history from './history';
@@ -12,7 +13,7 @@ function Login () {
     return (
         <div>
             <div className="login-form">
-                <h2>login</h2>
+                <Typography variant="h2">{title}</Typography>
                 <div className="form">
                     <form>
                         <div className="input-container">
