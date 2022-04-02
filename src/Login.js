@@ -6,30 +6,21 @@ import history from './history';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-async function loginUser(credentials) {
-    
-}
+// async function loginUser(credentials) {
+//     return ({"token": "hello"});
+// }
 
-function Login ({ setToken }) {
+function Login () {
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
-    const handleSubmit = async e => {
-        e.preventDefault();
-        const token = await loginUser({
-            email,
-            password
-        });
-        setToken(token);
-    }
-
     return (
-        <div>
+        <div classname="wrapper">
             <div className="login-form">
                 <Typography variant="h2">login</Typography>
                 <div className="form">
-                    <form onSubmit={handleSubmit}>
+                    <form>
                         <div className="input-container">
                             <input type="text" name="email" placeholder="email" required onChange={e => setEmail(e.target.value)}/>
                             {/* {renderErrorMessage("email")} */}
@@ -50,9 +41,5 @@ function Login ({ setToken }) {
         </div>
     );
 }
-
-Login.propTypes = {
-    setToken: PropTypes.func.isRequired
-};
 
 export default Login;
