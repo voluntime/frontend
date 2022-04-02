@@ -1,6 +1,20 @@
 @font-face {
   font-family: 'Ubuntu';
   src: url('./fonts/Ubuntu/Ubuntu-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('./fonts/Ubuntu/Ubuntu-Medium.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('./fonts/Ubuntu/Ubuntu-Light.ttf');
+  font-weight: lighter;
+  font-style: normal;
 }
 @font-face {
   font-family: 'Satisfy';
@@ -9,4 +23,98 @@
 @font-face {
   font-family: 'LibreFranklin';
   src: url('./fonts/Libre_Franklin/static/LibreFranklin-Regular.ttf');
+}
+
+/* https://coolors.co/2a4f53-799c8a-0bad44-94e7a6-c7e9c0-179cf0-de5e52-ba9746-ffd15d-fffef0 */
+:root {
+  --dark-slate: #2A4F53;
+  --morning: #799C8A;
+  --green: #0BAD44;
+  --granny-apple: #94E7A6;
+  --tea: #C7E9C0;
+  --blue: #179CF0;
+  --red: #DE5E52;
+  --yellow: #FFD15D;
+  --brown: #BA9746;
+  --ivory: #FFFEF0;
+  --white: #FFFFFF;
+
+  --bdr-rad-event: 1.5rem;
+  --bdr-rad-button: 0.5rem;
+}
+
+* {
+  font-family: 'Ubuntu', sans-serif;
+  line-height: 150%;
+}
+
+h2 {
+  font-family: 'Satisfy', sans-serif;
+}
+
+h3 {
+  color: var(--dark-slate);
+  font-size: 150%;
+  font-weight: bold;
+  margin: 0;
+}
+
+h4 {
+  color: var(--dark-slate);
+  font-size: 1rem;
+  font-weight: lighter;
+}
+
+p {
+  font-family: 'LibreFranklin';
+  color: var(--dark-slate);
+}
+
+.brown {
+  color: var(--brown);
+}
+
+.eventPost {
+  max-width: 36rem;
+}
+
+.eventHeader {
+  background-color: var(--yellow);
+  padding: 2rem;
+  border-top-left-radius: var(--bdr-rad-event);
+  border-top-right-radius: var(--bdr-rad-event);
+}
+
+.eventHeader > .avatar {
+  width: 6rem;
+  height: 6rem;
+  margin-right: 1rem;
+}
+
+.eventPost > .description {
+  background-color: var(--ivory);
+  padding: 1rem 2rem;
+}
+
+.eventActions {
+  padding: 2rem;
+  background-color: var(--tea);
+  border-bottom-left-radius: var(--bdr-rad-event);
+  border-bottom-right-radius: var(--bdr-rad-event);
+}
+
+.eventActions button {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--granny-apple);
+  color: var(--green);
+  border-radius: var(--bdr-rad-button);
+}
+
+.progressCounter {
+  font-size: 1rem;
+  margin: 0.5rem 2rem;
+  color: var(--ivory);
+  position: absolute;
+  z-index: 1;
 }
