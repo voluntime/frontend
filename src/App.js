@@ -18,18 +18,20 @@ function Feed() {
 
   return (
     <div classname="wrapper">
-      <Stack>
-        <Stack direction={"row"}>
-          <Typography variant="h2">hello</Typography>
-          <p>Robin Baker</p>
+      <Stack alignItems={'center'}>
+        <Stack className='feedHeader' direction={"row"}>
+          <Stack direction={'row'} justifyContent={'center'} alignItems={'flex-end'} spacing={1}>
+            <h2 style={{margin: 0}}>hello, </h2>
+            <h3 style={{marginBottom: '0.2rem'}}>Robin Baker</h3>
+          </Stack>
           <Avatar><Button onClick={handleClick}>H</Button></Avatar>
         </Stack>
-        <div classname="events">
+        <div className="events">
           <Event />
         </div>
-        <div classname="addPost">
-          <Button onClick={AddPost}><AddBoxIcon /></Button>
-        </div>
+        <Stack className="addPost" direction={'row'}>
+          <Button onClick={AddPost}><AddBoxIcon sx={{width: '4rem', height: '4rem'}} /></Button>
+        </Stack>
       </Stack>
     </div>
   );
