@@ -1,31 +1,33 @@
 // import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import SignUp from './SignUp';
+import history from './history';
 import React, { useState } from 'react';
 
 function Login () {
-    const [title, setTitle] = useState("Sign In");
-    const [buttonLabel, setButton] = useState("Login");
+    {/* TODO need setToken, verify user login */}
+    const [username, setUserName] = useState();
+    const [password, setPassword] = useState();
 
     return (
         <div>
             <div className="login-form">
-                <div className="title">{title}</div>
+                <h2>login</h2>
                 <div className="form">
                     <form>
-                        <div classname="input-container" id="name"></div>
                         <div className="input-container">
-                            <input type="text" name="uname" placeholder="email" required />
-                            {/* {renderErrorMessage("uname")} */}
+                            <input type="text" name="email" placeholder="email" required onChange={e => setUserName(e.target.value)}/>
+                            {/* {renderErrorMessage("email")} */}
                         </div>
                         <div className="input-container">
-                            <input type="password" name="pass" placeholder="password" required />
+                            <input type="password" name="pass" placeholder="password" required onChange={e => setPassword(e.target.value)}/>
                             {/* {renderErrorMessage("pass")} */}
                         </div>
                         <div className="button-container">
-                            <Button onclick={() => setButton("Sign up")}>{buttonLabel}</Button>
+                            <Button type="submit" variant="contained" color="primary">Login</Button>
                         </div>
                         <div className="button-container">
-                            <Button>Sign Up</Button>
+                            <Button variant="contained" color="secondary">Sign Up</Button>
                         </div>
                     </form>
                 </div>
