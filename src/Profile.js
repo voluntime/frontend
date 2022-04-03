@@ -1,6 +1,6 @@
 import './Profile.css'
 import Event from "./Event";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Badge from '@mui/material/Badge';
 import Stack from "@mui/material/Stack";
 import Avatar from "@mui/material/Avatar";
@@ -30,6 +30,7 @@ function reputation(hands) {
 function Profile({ setToken }) {
   const navigate = useNavigate();
   const [events, setEvents] = useState([]);
+  const { username } = useParams();
 
   useEffect(() => {
       fetch("https://api.volunti.me/v1/posts?profile=" + username, {
@@ -72,7 +73,6 @@ function Profile({ setToken }) {
   };
 
   let hands = 2; // TODO get from DB
-  let username = JSON.parse(localStorage.getItem("token")).username;
 
   return (
     <div className="wrapper">

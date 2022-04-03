@@ -1,5 +1,5 @@
 import './Event.css';
-import React, { useState } from 'react';
+import React, {useCallback, useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import LinearProgress from '@mui/material/LinearProgress';
@@ -10,13 +10,18 @@ import Hand from '@mui/icons-material/PanTool';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import TimerIcon from '@mui/icons-material/Timer';
+import {useNavigate} from "react-router-dom";
 
 function EventHeader(props) {
+    const navigate = useNavigate();
     const eventName = props.title || "Placeholder";
+    const organizer = props.organizer || "placeholder";
     const organization = props.organization || "Placeholder";
     const location = props.event_location || "Placeholder";
     const dateTime = props.begins || "Placeholder";
     const duration = new Date(props.ends) - new Date(props.begins) || "Placeholder";
+
+    const handleAvatarClick = useCallback(() => navigate('/profile/' + organizer, {replace : true}), [navigate]);
 
     return (
         <Stack
@@ -24,7 +29,7 @@ function EventHeader(props) {
             alignItems='center'
             spacing={2}
             className='eventHeader'>
-            <Avatar className='avatar'>H</Avatar>
+            <Avatar className='avatar' onClick={handleAvatarClick}>{organizer[0] || ""}</Avatar>
             <Stack>
                 <h3>{eventName}</h3>
                 {props.organization && (
