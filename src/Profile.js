@@ -10,6 +10,22 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import React, {useCallback, useEffect, useState} from "react";
 import Feed from './Feed';
 
+<<<<<<< HEAD
+async function getReputation(username) {
+    fetch("api.volunti.me/v1/reputation/" + username, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }).then(function (response) {
+        if (response.ok) {
+            reputation(response.json.getItem("reputation"))
+        } else {
+          console.log("NO REPUTATION FOR YOU");
+        }
+      });
+=======
 function Verified({ username }) {
     if (JSON.parse(localStorage.getItem("token")).verified) {
         return (
@@ -20,6 +36,7 @@ function Verified({ username }) {
     } else {
         return <h3>{username}</h3>;
     }
+>>>>>>> 2db4e268da30b4c8d0d10135cd4bb02eaf20d06f
 }
 
 function reputation(hands) {
@@ -70,6 +87,8 @@ function Profile({ setToken }) {
   };
 
   let hands = 2; // TODO get from DB
+  let username = JSON.parse(localStorage.getItem("token")).username;
+  getReputation(username);
 
   return (
     <div className="wrapper">
