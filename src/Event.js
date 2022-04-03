@@ -68,13 +68,48 @@ function ProgressBar () {
     );
 }
 
-function EventButtons() {
+function EventButtons(props) {
+    const [liked, setLike] = useState(props.liked);
+    const [volunteered, setVolunteer] = useState(props.volunteered);
+
+    const performInteraction = (type, setHandler) => {
+        fetch("https://api.volunti.me/v1/interaction/" + type, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                id: props.id
+            })
+        })
+            .then((resp) => resp.json())
+            .then((json) => {
+               setHandler(json.interaction);
+            })
+    };
+
+    const likeTapHandler = () => {
+        performInteraction("like", setLike);
+    };
+
+    const volunteerTapHandler = () => {
+        performInteraction("volunteer", setVolunteer);
+    };
+
     return (
         <Stack direction={'row'} spacing={2} justifyContent='center' alignItems='center' className='eventActions'>
-            <Button>
+            <Button onClick={() => likeTapHandler()} sx={{
+                backgroundColor: liked ? "--green" : "--granny-apple",
+                color: !liked ? "--green" : "--granny-apple",
+            }}>
                 <UpArrow sx={{ marginRight: '0.5rem' }}/> Like
             </Button>
-            <Button onClick={ProgressBar.changeWidth}>
+            <Button onClick={() => volunteerTapHandler()} sx={{
+                backgroundColor: volunteered ? "--green" : "--granny-apple",
+                color: !volunteered ? "--green" : "--granny-apple",
+            }}
+
+            >
                 <Hand sx={{ marginRight: '0.5rem' }}/> Volunteer
             </Button>
         </Stack>
