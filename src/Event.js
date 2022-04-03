@@ -59,13 +59,14 @@ function EventHeader(props) {
 function ProgressBar ({ volunteerCount, volunteerGoal }) {
 
     let progress = volunteerCount / volunteerGoal;
+    let progressVal = progress > 1 ? 100 : progress * 100;
 
     return (
         <div>
             <div className='progressCounter'>
                 {volunteerCount} / {volunteerGoal}
             </div>
-            <LinearProgress variant="determinate" value={progress * 100} sx={{height: '2.5rem'}}/>
+            <LinearProgress variant="determinate" value={progressVal} sx={{height: '2.5rem'}}/>
         </div>
     );
 }
