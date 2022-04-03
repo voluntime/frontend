@@ -1,3 +1,4 @@
+import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import SignUp from './SignUp';
 import NotFound from './NotFound';
@@ -5,6 +6,7 @@ import history from './history';
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
+import Header from './Header.js';
 
 async function loginUser(credentials) {
     return fetch("https://api.volunti.me/v1/login", {
@@ -51,8 +53,10 @@ function Menu({ setToken }) {
     return (
         <div className="wrapper">
             <div className="login-form">
-                <h2>login</h2>
-                <div className="form">
+                <Header>
+                    <h2>login</h2>
+                </Header>
+                <div className="form" margin='auto'>
                     <form onSubmit={handleSubmit}>
                         <div className="input-container">
                             <input type="text" name="uname" placeholder="username" required onChange={e => setUserName(e.target.value)}/>

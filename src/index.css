@@ -30,12 +30,7 @@
 }
 
 @import url('colors.css');
-:root {
-  --bdr-rad-event: 1.5rem;
-  --bdr-rad-button: 0.5rem;
-  --avatar-size: 6rem;
-  --content-width: 36rem;
-}
+@import url('sizes.css');
 
 * {
   font-family: 'Ubuntu', sans-serif;
