@@ -10,6 +10,7 @@ import Hand from '@mui/icons-material/PanTool';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import TimerIcon from '@mui/icons-material/Timer';
+import CorporateFareIcon from '@mui/icons-material/CorporateFare';
 
 function EventHeader(props) {
     const eventName = props.title || "Placeholder";
@@ -29,7 +30,7 @@ function EventHeader(props) {
                 <h3>{eventName}</h3>
                 {props.organization && (
                     <Stack direction='row' spacing={1}>
-                        <LocationOnIcon className='brown'/>
+                        <CorporateFareIcon className='brown'/>
                         <h4>{organization}</h4>
                     </Stack>
                 )}
