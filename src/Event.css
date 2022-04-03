@@ -35,9 +35,18 @@
 .eventActions button {
   width: 100%;
   padding: 1rem;
-  background-color: var(--granny-apple);
-  color: var(--green);
+
   border-radius: var(--bdr-rad-button);
+}
+
+.buttonInactive {
+  background: var(--granny-apple);
+  color: var(--green);
+}
+
+.buttonActive {
+  background: var(--green);
+  color: var(--granny-apple);
 }
 
 .progressCounter {

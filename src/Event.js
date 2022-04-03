@@ -1,5 +1,5 @@
 import './Event.css';
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import LinearProgress from '@mui/material/LinearProgress';
@@ -10,13 +10,19 @@ import Hand from '@mui/icons-material/PanTool';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import TimerIcon from '@mui/icons-material/Timer';
+import {useNavigate} from "react-router-dom";
+import CorporateFareIcon from '@mui/icons-material/CorporateFare';
 
 function EventHeader(props) {
+    const navigate = useNavigate();
     const eventName = props.title || "Placeholder";
+    const organizer = props.organizer || "placeholder";
     const organization = props.organization || "Placeholder";
     const location = props.event_location || "Placeholder";
     const dateTime = props.begins || "Placeholder";
-    const duration = new Date(props.ends) - new Date(props.begins) || "Placeholder";
+    const duration = Math.abs(new Date(props.ends) - new Date(props.begins)) / 36e5 + "Hours" || "Placeholder";
+
+    const handleAvatarClick = useCallback(() => navigate('/profile/' + organizer, {replace : true}), [navigate]);
 
     return (
         <Stack
@@ -24,12 +30,12 @@ function EventHeader(props) {
             alignItems='center'
             spacing={2}
             className='eventHeader'>
-            <Avatar className='avatar'>H</Avatar>
+            <Avatar className='avatar' onClick={handleAvatarClick}>{organizer[0] || ""}</Avatar>
             <Stack>
                 <h3>{eventName}</h3>
                 {props.organization && (
                     <Stack direction='row' spacing={1}>
-                        <LocationOnIcon className='brown'/>
+                        <CorporateFareIcon className='brown'/>
                         <h4>{organization}</h4>
                     </Stack>
                 )}
@@ -70,8 +76,8 @@ function ProgressBar () {
 }
 
 function EventButtons(props) {
-    const [liked, setLike] = useState(props.liked);
-    const [volunteered, setVolunteer] = useState(props.volunteered);
+    const [liked, setLike] = useState(props.liked || true);
+    const [volunteered, setVolunteer] = useState(props.volunteered || false);
 
     const performInteraction = (type, setHandler) => {
         const options = {
@@ -102,18 +108,11 @@ function EventButtons(props) {
 
     return (
         <Stack direction={'row'} spacing={2} justifyContent='center' alignItems='center' className='eventActions'>
-            <Button onClick={() => likeTapHandler()} sx={{
-                backgroundColor: liked ? "--green" : "--granny-apple",
-                color: !liked ? "--green" : "--granny-apple",
-            }}>
+            <Button variant={liked ? "contained" : "outlined"} onClick={() => likeTapHandler()}>
                 <UpArrow sx={{ marginRight: '0.5rem' }}/> Like
             </Button>
-            <Button onClick={() => volunteerTapHandler()} sx={{
-                backgroundColor: volunteered ? "--green" : "--granny-apple",
-                color: !volunteered ? "--green" : "--granny-apple",
-            }}
 
-            >
+            <Button variant={volunteered ? "contained" : "outlined"} onClick={() => volunteerTapHandler()}>
                 <Hand sx={{ marginRight: '0.5rem' }}/> Volunteer
             </Button>
         </Stack>

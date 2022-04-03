@@ -110,6 +110,7 @@ function Post() {
         <label>Begins At</label>
         <input
           type="datetime-local"
+          min="2022-04-02T10:20:pm"
           name="begins"
           onChange={(e) => setBeginsAt(e.target.value)}
           placeholder=""
