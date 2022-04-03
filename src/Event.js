@@ -70,8 +70,8 @@ function ProgressBar () {
 }
 
 function EventButtons(props) {
-    const [liked, setLike] = useState(props.liked);
-    const [volunteered, setVolunteer] = useState(props.volunteered);
+    const [liked, setLike] = useState(props.liked || true);
+    const [volunteered, setVolunteer] = useState(props.volunteered || false);
 
     const performInteraction = (type, setHandler) => {
         const options = {
@@ -100,23 +100,13 @@ function EventButtons(props) {
         performInteraction("volunteer", setVolunteer);
     };
 
-    console.log(volunteered, liked);
-
     return (
         <Stack direction={'row'} spacing={2} justifyContent='center' alignItems='center' className='eventActions'>
-            <Button onClick={() => likeTapHandler()} sx={{
-                backgroundColor: liked ? "var(--green)" : "var(--granny-apple)",
-                color: !liked ? "var(--green)" : "var(--granny-apple)",
-            }}>
+            <Button variant={liked ? "contained" : "outlined"} onClick={() => likeTapHandler()}>
                 <UpArrow sx={{ marginRight: '0.5rem' }}/> Like
             </Button>
 
-            <Button onClick={() => volunteerTapHandler()} sx={{
-                backgroundColor: volunteered ? "var(--green)" : "var(--granny-apple)",
-                color: !volunteered ? "var(--green)" : "var(--granny-apple)",
-            }}
-
-            >
+            <Button variant={volunteered ? "contained" : "outlined"} onClick={() => volunteerTapHandler()}>
                 <Hand sx={{ marginRight: '0.5rem' }}/> Volunteer
             </Button>
         </Stack>
@@ -124,7 +114,6 @@ function EventButtons(props) {
 }
 
 function Event(props) {
-    console.log(props);
     const eventDescription = props.body || "";
     const eventId = props.id || -1;
 
