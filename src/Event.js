@@ -72,8 +72,8 @@ function ProgressBar ({ volunteerCount, volunteerGoal }) {
 }
 
 function EventButtons(props) {
-    const [liked, setLike] = useState(props.liked || true);
-    const [volunteered, setVolunteer] = useState(props.volunteered || false);
+    const [liked, setLike] = useState(props.liked);
+    const [volunteered, setVolunteer] = useState(props.volunteered);
 
     const {
         volunteerCount,
