@@ -44,6 +44,7 @@ function Feed() {
 }
 
 function App() {
+  // TODO init state to localstorage if exists
   const [token, setToken] = useState();
 
   if (!token) {
