@@ -1,0 +1,13 @@
+@import url('colors.css');
+@import url('sizes.css');
+
+.header {
+  background-color: var(--yellow);
+  justify-content: center;
+  min-height: 4rem;
+}
+
+.headerContent {
+  width: 100%;
+  max-width: var(--content-width);
+}
