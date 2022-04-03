@@ -74,14 +74,16 @@ function EventButtons(props) {
     const [volunteered, setVolunteer] = useState(props.volunteered);
 
     const performInteraction = (type, setHandler) => {
+        const options = {
+            id: props.eventId
+        };
+
         fetch("https://api.volunti.me/v1/interaction/" + type, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                id: props.id
-            }),
+            body: JSON.stringify(options),
             credentials: "include"
         })
             .then((resp) => resp.json())
@@ -120,6 +122,7 @@ function EventButtons(props) {
 
 function Event(props) {
     const eventDescription = props.body || "";
+    const eventId = props.id || -1;
 
     return (
         <Stack className='eventPost'>
@@ -128,7 +131,7 @@ function Event(props) {
                 <p>{eventDescription}</p>
             </div>
             <ProgressBar {...props} />
-            <EventButtons {...props} />
+            <EventButtons {...props} eventId={eventId} />
         </Stack>
     );
 
