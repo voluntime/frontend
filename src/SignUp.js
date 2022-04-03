@@ -49,6 +49,8 @@ function SignUp({ setToken }) {
     }
     // TODO fix reroute to main feed
     setToken(token);
+    handleClick();
+    window.location.reload();
   };
 
   return (
