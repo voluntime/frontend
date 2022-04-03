@@ -79,11 +79,11 @@ function Post() {
                         </div>
                         <div className="input-container">
                             <label>Begins At</label>
-                            <input type="datetime-local" name="begins" onChange={e => setBeginsAt(e.target.value)} placeholder="" />
+                            <input type="datetime" name="begins" onChange={e => setBeginsAt(e.target.value)} placeholder="" />
                         </div>
                         <div className="input-container">
                             <label>Ends At</label>
-                            <input type="datetime-local" name="ends" onChange={e => setEndsAt(e.target.value)} placeholder="" />
+                            <input type="datetime" name="ends" onChange={e => setEndsAt(e.target.value)} placeholder="" />
                         </div>
                         <div className="button-container">
                             <Button type="submit" variant="contained" color="primary">Post</Button>
