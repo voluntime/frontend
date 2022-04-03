@@ -59,7 +59,7 @@ function Post() {
         </Button>
         <h2>new event</h2>
       </Header>
-      <form className="form content" onSubmit={handleSubmit} style={{padding: '2rem 0'}}>
+      <form className="form content" onSubmit={handleSubmit}>
         <label>Title</label>
         <input
           type="text"

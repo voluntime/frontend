@@ -1,6 +1,23 @@
 @import url('sizes.css');
 @import url('colors.css');
 
+.upcomingGroup {
+  /* margin-top: 1rem; */
+  width: 100%;
+  border-radius: var(--bdr-rad-button);
+  background-color: var(--granny-apple);
+}
+
+.upcomingTitle {
+  border-bottom: 1px solid var(--green);
+}
+
+.upcomingTitle > * {
+  font-weight: lighter;
+  color: var(--dark-slate);
+  margin: 0.5rem 1.5rem;
+}
+
 .App {
   text-align: center;
 }
