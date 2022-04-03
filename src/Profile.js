@@ -10,19 +10,8 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import React, {useCallback, useEffect, useState} from "react";
 import Feed from './Feed';
 
-async function getReputation(username) {
-  fetch("api.volunti.me/v1/reputation/" + username, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    credentials: "include",
-  }).then((resp) => resp.json()).then(function (json) {
-    reputation(json.getItem("reputation"))
-  });
-}
-function Verified({ username }) {
-    if (JSON.parse(localStorage.getItem("token")).verified) {
+function Verified({ username, verified }) {
+    if (verified) {
         return (
             <Badge badgeContent={'✓'} color="secondary">
                 <h3>{username}</h3>
@@ -53,6 +42,8 @@ function reputation(hands) {
 function Profile({ setToken }) {
   const navigate = useNavigate();
 
+  const [hands, setHands] = useState(0);
+
   const feedClicked = useCallback(
     () => navigate("/", { replace: true }),
     [navigate]
@@ -80,9 +71,20 @@ function Profile({ setToken }) {
     })
   };
 
-  let hands = 2; // TODO get from DB
   let username = JSON.parse(localStorage.getItem("token")).username;
-  getReputation(username);
+  let verified = JSON.parse(localStorage.getItem("token")).verified;
+
+  useEffect(() => {
+      fetch("https://api.volunti.me/v1/reputation/" + username, {
+          method: "GET",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          credentials: "include",
+      }).then((resp) => resp.json()).then(function (json) {
+          setHands(json["reputation"]);
+      });
+  })
 
   return (
     <div className="wrapper">
@@ -104,7 +106,7 @@ function Profile({ setToken }) {
 
           {/* PROFILE INFORMATION */}
           <Avatar sx={{width: 'var(--avatar-size)', height: 'var(--avatar-size)'}}>{username[0]}</Avatar>
-          <Verified username={username}/>
+          <Verified username={username} verfied={verified}/>
           <div className="email"></div>
           {reputation(hands)}
         </Stack>
