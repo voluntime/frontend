@@ -8,11 +8,12 @@ import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 
 async function loginUser(credentials) {
     return fetch("https://api.volunti.me/v1/login", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(credentials)
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(credentials),
+        credentials: "include"
     })
     .then(function(response) {
         if(response.ok) {
