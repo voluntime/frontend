@@ -1,6 +1,6 @@
 import './Profile.css'
 import Event from "./Event";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Badge from '@mui/material/Badge';
 import Stack from "@mui/material/Stack";
 import Avatar from "@mui/material/Avatar";
@@ -10,6 +10,7 @@ import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
 import LogoutIcon from '@mui/icons-material/Logout';
 import React, {useCallback, useEffect, useState} from "react";
 
+<<<<<<< HEAD
 async function getReputation(username) {
     fetch("api.volunti.me/v1/reputation/" + username, {
         method: "GET",
@@ -24,6 +25,18 @@ async function getReputation(username) {
           console.log("NO REPUTATION FOR YOU");
         }
       });
+=======
+function Verified({ username }) {
+    if (JSON.parse(localStorage.getItem("token")).verified) {
+        return (
+            <Badge badgeContent={'✓'} color="secondary">
+                <h3>{username}</h3>
+            </Badge>
+        );
+    } else {
+        return <h3>{username}</h3>;
+    }
+>>>>>>> 2db4e268da30b4c8d0d10135cd4bb02eaf20d06f
 }
 
 function reputation(hands) {
@@ -46,6 +59,7 @@ function reputation(hands) {
 function Profile({ setToken }) {
   const navigate = useNavigate();
   const [events, setEvents] = useState([]);
+  const { username } = useParams();
 
   useEffect(() => {
       fetch("https://api.volunti.me/v1/posts?profile=" + username, {
@@ -111,9 +125,7 @@ function Profile({ setToken }) {
 
           {/* PROFILE INFORMATION */}
           <Avatar sx={{width: 'var(--avatar-size)', height: 'var(--avatar-size)'}}>{username[0]}</Avatar>
-          <Badge badgeContent={'✓'} color="secondary">
-            <h3>{username}</h3>
-          </Badge>
+          <Verified username={username}/>
           <div className="email"></div>
           {reputation(hands)}
         </Stack>
