@@ -8,7 +8,7 @@ import Header from "./Header";
 function Post() {
   const [organization, setOrganization] = useState('');
   const [title, setTitle] = useState();
-  const [type, setType] = useState();
+  const [eventType, setEventType] = useState();
   const [body, setBody] = useState();
   const [eventLocation, setEventLocation] = useState();
   const [volunteerGoal, setvolunteerGoal] = useState();
@@ -42,7 +42,7 @@ function Post() {
     await submitForm({
       organization,
       title,
-      type,
+      eventType,
       body,
       eventLocation,
       volunteerGoal,
@@ -71,7 +71,7 @@ function Post() {
         <label>Organization</label>
         <input
           type="text"
-          name="title"
+          name="organization"
           onChange={(e) => setOrganization(e.target.value)}
           placeholder=""
         />
@@ -86,14 +86,14 @@ function Post() {
         <label>Type</label>
         <input
           type="text"
-          name="type"
-          onChange={(e) => setType(e.target.value)}
+          name="eventType"
+          onChange={(e) => setEventType(e.target.value)}
           placeholder=""
           required
         />
         <label>Volunteer Count</label>
         <input
-          type="text"
+          type="number"
           name="count"
           onChange={(e) => setvolunteerGoal(e.target.value)}
           placeholder=""
