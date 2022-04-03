@@ -53,9 +53,13 @@ function Menu({ setToken }) {
   return (
     <div className="wrapper">
       <div className="login-form">
-        <Header/>
+        <Header>
+          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', width: '100%'}}>
+            <h2>login</h2>
+          </div>
+        </Header>
         <div className="form content">
-          <h2>login</h2>
+          <img src="title.png" alt='voluntime logo' style={{maxWidth: '16rem', margin: '1.5rem 0'}}/>
           <form onSubmit={handleSubmit}>
             <div className="input-container">
               <input
