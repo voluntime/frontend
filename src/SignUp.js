@@ -9,7 +9,8 @@ async function signUpUser(credentials) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(credentials)
+            body: JSON.stringify(credentials),
+            credentials : "include"
     })
     .then(data => data.status === 201)
 }
@@ -34,8 +35,8 @@ function SignUp ( {setToken} ) {
             name,
             email,
             password,
-            organization,
             zip,
+            organization,
             bio
         });
 

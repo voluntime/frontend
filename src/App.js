@@ -47,10 +47,16 @@ function Feed() {
 function App() {
   // TODO init state to localstorage if exists
   const [token, setToken] = useState();
+  const [user, setUser] = useState()
 
-  if (!token) {
-    return <Login setToken={setToken} />
+  if (!localStorage.getItem('username')) {
+    if (!token) {
+      return <Login setToken={setToken} />
+    }
+    localStorage.setItem('username', token.username);
   }
+
+  console.log(token);
 
   return (
     <div className="wrapper">
