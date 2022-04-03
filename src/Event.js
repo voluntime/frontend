@@ -69,13 +69,44 @@ function ProgressBar () {
     );
 }
 
-function EventButtons() {
+function EventButtons(props) {
+    const [liked, setLike] = useState(props.liked || true);
+    const [volunteered, setVolunteer] = useState(props.volunteered || false);
+
+    const performInteraction = (type, setHandler) => {
+        const options = {
+            id: props.eventId
+        };
+
+        fetch("https://api.volunti.me/v1/interaction/" + type, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(options),
+            credentials: "include"
+        })
+            .then((resp) => resp.json())
+            .then((json) => {
+               setHandler(json.interaction);
+            })
+    };
+
+    const likeTapHandler = () => {
+        performInteraction("like", setLike);
+    };
+
+    const volunteerTapHandler = () => {
+        performInteraction("volunteer", setVolunteer);
+    };
+
     return (
         <Stack direction={'row'} spacing={2} justifyContent='center' alignItems='center' className='eventActions'>
-            <Button>
+            <Button variant={liked ? "contained" : "outlined"} onClick={() => likeTapHandler()}>
                 <UpArrow sx={{ marginRight: '0.5rem' }}/> Like
             </Button>
-            <Button onClick={ProgressBar.changeWidth}>
+
+            <Button variant={volunteered ? "contained" : "outlined"} onClick={() => volunteerTapHandler()}>
                 <Hand sx={{ marginRight: '0.5rem' }}/> Volunteer
             </Button>
         </Stack>
@@ -84,6 +115,7 @@ function EventButtons() {
 
 function Event(props) {
     const eventDescription = props.body || "";
+    const eventId = props.id || -1;
 
     return (
         <Stack className='eventPost'>
@@ -92,7 +124,7 @@ function Event(props) {
                 <p>{eventDescription}</p>
             </div>
             <ProgressBar {...props} />
-            <EventButtons {...props} />
+            <EventButtons {...props} eventId={eventId} />
         </Stack>
     );
 
