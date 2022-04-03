@@ -13,8 +13,9 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import UpcomingBanner from './UpcomingBanner';
 import Header from './Header';
+import Feed from './Feed';
 
-function Feed() {
+function MainFeed() {
   const navigate = useNavigate();
   const handleClick = useCallback(() => navigate('/profile', {replace : true}), [navigate]);
   const AddPost = useCallback(() => navigate('/post', {replace : true}), [navigate]);
@@ -47,21 +48,7 @@ function Feed() {
 
       {/* ACTUAL FEED */}
       <Stack className='content'>
-        <div className="events">
-          {
-            events.length > 0
-            ?
-              events.map((e) => (
-                <Event {...e} />
-              ))
-            : (
-              <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                <p>No events to volunteer for! Time to chill.</p>
-                <img src='chill.svg' alt='sunglasses dude on lawn chair' style={{width: '100%', height: 'auto', maxWidth: '12rem'}}/>
-              </div>
-            )
-          }
-        </div>
+        <Feed user={null}/>
       </Stack>
 
       {/* ADD NEW EVENT */}
@@ -92,7 +79,7 @@ function App() {
     <div className="wrapper">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Feed/>} />
+          <Route path="/" element={<MainFeed/>} />
           <Route path="/profile" element={<Profile setToken={setToken}/>} />
           <Route path="/post" element={<Post/>} />
           <Route path="/settings" element={<Settings/>}/>
