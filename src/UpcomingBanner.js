@@ -11,7 +11,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 function UpcomingBanner(props) {
   let icon = props.organizer ? <CalendarMonthIcon /> : <Hand />;
   return (
-    <Stack className='upcomingBanner' direction='row' spacing={1} width='100%'>
+    <Stack className='upcomingBanner' direction='row' spacing={1} width='100%' alignItems={'center'}>
       {icon}
       <p style={{fontWeight: 'lighter', padding: 0}}>{props.date}:</p>
       <p style={{fontWeight: 'bold', padding: 0}}>{props.name}</p>
