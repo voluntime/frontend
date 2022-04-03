@@ -65,7 +65,7 @@ function ProgressBar ({ volunteerCount, volunteerGoal }) {
             <div className='progressCounter'>
                 {volunteerCount} / {volunteerGoal}
             </div>
-            <LinearProgress variant="determinate" value={progress} sx={{height: '2.5rem'}}/>
+            <LinearProgress variant="determinate" value={progress * 100} sx={{height: '2.5rem'}}/>
         </div>
     );
 }
