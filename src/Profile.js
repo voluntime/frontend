@@ -6,7 +6,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Hand from '@mui/icons-material/PanTool';
 import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
-import SettingsIcon from '@mui/icons-material/Settings';
+import LogoutIcon from '@mui/icons-material/Logout';
 import React, { useCallback } from "react";
 
 function reputation(hands) {
@@ -26,16 +26,31 @@ function reputation(hands) {
   );
 }
 
-function Profile() {
+function Profile({setToken}) {
   const navigate = useNavigate();
   const feedClicked = useCallback(
     () => navigate("/", { replace: true }),
     [navigate]
   );
-  const settingsClicked = useCallback( // TODO
-    () => navigate("/settings", { replace: true }),
-    [navigate]
-  );
+  const logoutClicked = async () => {
+    console.log('logout pressed');
+    fetch("https://api.volunti.me/v1/logout", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: "include"
+    })
+    .then(function(response) {
+      if(response.ok) {
+        setToken(null);
+        console.log('logout successful');
+      } else {
+        console.log('error logging out');
+        // Error loggin out
+      }
+    })
+  };
 
   let hands = 2; // TODO get from DB
 
@@ -52,8 +67,8 @@ function Profile() {
               <DynamicFeedIcon className="brown" sx={{width: '3rem', height: '3rem'}}/>
             </Button>
             {/* SETTINGS */}
-            <Button onClick={settingsClicked} sx={{margin: '2rem'}}>
-              <SettingsIcon className="brown" sx={{width: '3rem', height: '3rem'}}/>
+            <Button onClick={logoutClicked} sx={{margin: '2rem'}}>
+              <LogoutIcon className="brown" sx={{width: '3rem', height: '3rem'}}/>
             </Button>
           </Stack>
 
