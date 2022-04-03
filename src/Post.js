@@ -54,13 +54,13 @@ function Post() {
     <div className="wrapper">
       <Stack>
         <Stack direction={"row"}>
-          <Button onClick={handleSubmit}>
+          <Button onClick={backToFeed}>
             <DynamicFeedIcon />
           </Button>
           <h2>new event</h2>
         </Stack>
         <div className="form">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="input-container">
               <label>Title</label>
               <input

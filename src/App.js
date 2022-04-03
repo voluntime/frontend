@@ -25,9 +25,9 @@ function Feed() {
       <Header>
         <Stack direction={'row'} justifyContent={'center'} alignItems={'flex-end'} spacing={1}>
           <h2 style={{margin: 0}}>hello, </h2>
-          <h3 style={{marginBottom: '0.2rem'}}>Robin Baker</h3>
+          <h3 style={{marginBottom: '0.2rem'}}>Fix</h3>
         </Stack>
-        <Avatar><Button onClick={handleClick}>H</Button></Avatar>
+        <Avatar><Button onClick={handleClick}>Fix</Button></Avatar>
       </Header>
 
       {/* ACTUAL FEED */}
@@ -60,8 +60,6 @@ function App() {
   if (!token) {
     return <Login setToken={setToken} />
   }
-
-  console.log(token);
 
   return (
     <div className="wrapper">
