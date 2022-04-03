@@ -43,6 +43,7 @@ function MainFeed(props) {
 
   // Events for feed
   const [events, setEvents] = useState([]);
+
   useEffect(() => {
       fetch("https://api.volunti.me/v1/posts", {
         credentials: "include",
