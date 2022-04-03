@@ -12,6 +12,7 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import React, { useCallback, useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import UpcomingBanner from './UpcomingBanner';
+import Header from './Header';
 
 function Feed() {
   const navigate = useNavigate();
@@ -20,25 +21,25 @@ function Feed() {
 
   return (
     <div className="wrapper">
-      <Stack alignItems={'center'}>
-        {/* HEADER */}
-        <Stack className='feedHeader' direction={"row"}>
-          <Stack direction={'row'} justifyContent={'center'} alignItems={'flex-end'} spacing={1}>
-            <h2 style={{margin: 0}}>hello, </h2>
-            <h3 style={{marginBottom: '0.2rem'}}>Robin Baker</h3>
-          </Stack>
-          <Avatar><Button onClick={handleClick}>H</Button></Avatar>
+      {/* HEADER */}
+      <Header>
+        <Stack direction={'row'} justifyContent={'center'} alignItems={'flex-end'} spacing={1}>
+          <h2 style={{margin: 0}}>hello, </h2>
+          <h3 style={{marginBottom: '0.2rem'}}>Robin Baker</h3>
         </Stack>
+        <Avatar><Button onClick={handleClick}>H</Button></Avatar>
+      </Header>
 
-        {/* ACTUAL FEED */}
-        <Stack className='content'>
-          <div className="events">
-            <Event />
-          </div>
-          <Stack className="addPost" direction={'row'}>
-            <Button onClick={AddPost}><AddBoxIcon sx={{width: '4rem', height: '4rem'}} /></Button>
-          </Stack>
-        </Stack>
+      {/* ACTUAL FEED */}
+      <Stack className='content'>
+        <div className="events">
+          <Event />
+        </div>
+      </Stack>
+
+      {/* ADD NEW EVENT */}
+      <Stack className="addPost" direction={'row'}>
+        <Button onClick={AddPost}><AddBoxIcon class='addIcon'/></Button>
       </Stack>
     </div>
   );

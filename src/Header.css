@@ -10,4 +10,6 @@
 .headerContent {
   width: 100%;
   max-width: var(--content-width);
+  justify-content: space-between;
+  align-items: center;
 }
