@@ -1,3 +1,4 @@
+import './Profile.css'
 import Event from "./Event";
 import { useNavigate } from "react-router-dom";
 import Badge from '@mui/material/Badge';
