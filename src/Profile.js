@@ -10,6 +10,18 @@ import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
 import LogoutIcon from '@mui/icons-material/Logout';
 import React, {useCallback, useEffect, useState} from "react";
 
+function Verified({ username }) {
+    if (JSON.parse(localStorage.getItem("token")).verified) {
+        return (
+            <Badge badgeContent={'✓'} color="secondary">
+                <h3>{username}</h3>
+            </Badge>
+        );
+    } else {
+        return <h3>{username}</h3>;
+    }
+}
+
 function reputation(hands) {
   // 0 hands =  0 verified events
   // 1 hands =  1 verified event
@@ -94,9 +106,7 @@ function Profile({ setToken }) {
 
           {/* PROFILE INFORMATION */}
           <Avatar sx={{width: 'var(--avatar-size)', height: 'var(--avatar-size)'}}>{username[0]}</Avatar>
-          <Badge badgeContent={'✓'} color="secondary">
-            <h3>{username}</h3>
-          </Badge>
+          <Verified username={username}/>
           <div className="email"></div>
           {reputation(hands)}
         </Stack>
