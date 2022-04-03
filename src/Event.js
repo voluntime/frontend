@@ -17,7 +17,7 @@ function EventHeader(props) {
     const organization = props.organization || "Placeholder";
     const location = props.event_location || "Placeholder";
     const dateTime = props.begins || "Placeholder";
-    const duration = new Date(props.ends) - new Date(props.begins) || "Placeholder";
+    const duration = Math.abs(new Date(props.ends) - new Date(props.begins)) / 36e5 + "Hours" || "Placeholder";
 
     return (
         <Stack
