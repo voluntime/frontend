@@ -57,7 +57,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Feed/>} />
-          <Route path="/profile" element={<Profile/>} />
+          <Route path="/profile" element={<Profile setToken={setToken}/>} />
           <Route path="/post" element={<Post/>} />
           <Route path="/settings" element={<Settings/>}/>
           <Route path="*" element={<NotFound />}/>
