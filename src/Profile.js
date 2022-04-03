@@ -10,12 +10,8 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import React, {useCallback, useEffect, useState} from "react";
 import Feed from './Feed';
 
-async function getReputation(username) {
-
-}
-
-function Verified({ username }) {
-    if (JSON.parse(localStorage.getItem("token")).verified) {
+function Verified({ username, verified }) {
+    if (verified) {
         return (
             <Badge badgeContent={'✓'} color="secondary">
                 <h3>{username}</h3>
