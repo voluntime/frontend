@@ -100,17 +100,20 @@ function EventButtons(props) {
         performInteraction("volunteer", setVolunteer);
     };
 
+    console.log(volunteered, liked);
+
     return (
         <Stack direction={'row'} spacing={2} justifyContent='center' alignItems='center' className='eventActions'>
             <Button onClick={() => likeTapHandler()} sx={{
-                backgroundColor: liked ? "--green" : "--granny-apple",
-                color: !liked ? "--green" : "--granny-apple",
+                backgroundColor: liked ? "var(--green)" : "var(--granny-apple)",
+                color: !liked ? "var(--green)" : "var(--granny-apple)",
             }}>
                 <UpArrow sx={{ marginRight: '0.5rem' }}/> Like
             </Button>
+
             <Button onClick={() => volunteerTapHandler()} sx={{
-                backgroundColor: volunteered ? "--green" : "--granny-apple",
-                color: !volunteered ? "--green" : "--granny-apple",
+                backgroundColor: volunteered ? "var(--green)" : "var(--granny-apple)",
+                color: !volunteered ? "var(--green)" : "var(--granny-apple)",
             }}
 
             >
@@ -121,6 +124,7 @@ function EventButtons(props) {
 }
 
 function Event(props) {
+    console.log(props);
     const eventDescription = props.body || "";
     const eventId = props.id || -1;
 
