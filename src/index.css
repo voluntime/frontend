@@ -19,10 +19,14 @@
 @font-face {
   font-family: 'Satisfy';
   src: url('./fonts/Satisfy/Satisfy-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
   font-family: 'LibreFranklin';
   src: url('./fonts/Libre_Franklin/static/LibreFranklin-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
 }
 
 /* https://coolors.co/2a4f53-799c8a-0bad44-94e7a6-c7e9c0-179cf0-de5e52-ba9746-ffd15d-fffef0 */
@@ -41,6 +45,7 @@
 
   --bdr-rad-event: 1.5rem;
   --bdr-rad-button: 0.5rem;
+  --content-width: 36rem;
 }
 
 * {
@@ -48,8 +53,14 @@
   line-height: 150%;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 h2 {
   font-family: 'Satisfy', sans-serif;
+  color: var(--brown);
 }
 
 h3 {
@@ -74,8 +85,37 @@ p {
   color: var(--brown);
 }
 
+.feedHeader {
+  max-width: var(--content-width);
+  width: 100%;
+  background-color: var(--yellow);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feedHeader > *{
+  margin: 2rem;
+}
+
+.content {
+  max-width: var(--content-width);
+}
+
+.upcomingBanner {
+  background-color: var(--granny-apple);
+}
+
+.upcomingBanner > * {
+  margin: 0.5rem;
+}
+
+.upcomingBanner svg {
+  margin-left: 1rem;
+  fill: var(--green);
+}
+
 .eventPost {
-  max-width: 36rem;
+  margin: 2rem;
 }
 
 .eventHeader {
@@ -89,6 +129,8 @@ p {
   width: 6rem;
   height: 6rem;
   margin-right: 1rem;
+  background-color: var(--ivory);
+  color: var(--dark-slate);
 }
 
 .eventPost > .description {
@@ -117,4 +159,12 @@ p {
   color: var(--ivory);
   position: absolute;
   z-index: 1;
+}
+
+.addPost {
+  width: 100%;
+  justify-content: center;
+  position: sticky;
+  bottom: 0;
+  background-color: var(--white);
 }
