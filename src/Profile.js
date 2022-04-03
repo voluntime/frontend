@@ -24,6 +24,7 @@ async function getReputation(username) {
           console.log("NO REPUTATION FOR YOU");
         }
       });
+    }
 function Verified({ username }) {
     if (JSON.parse(localStorage.getItem("token")).verified) {
         return (
