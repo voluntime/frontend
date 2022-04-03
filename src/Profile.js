@@ -31,7 +31,7 @@ function Profile({ setToken }) {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-      fetch("https://api.volunti.me/v1/posts?profile=adam", {
+      fetch("https://api.volunti.me/v1/posts?profile=trey_time", {
         credentials: "include",
         headers: {
           "Content-Type": "application/json"
