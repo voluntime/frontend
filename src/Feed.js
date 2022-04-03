@@ -32,7 +32,7 @@ function Feed(props) {
         : (
           <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
             <p>No events to volunteer for! Time to chill.</p>
-            <img src='chill.svg' alt='sunglasses dude on lawn chair' style={{width: '100%', height: 'auto', maxWidth: '12rem'}}/>
+            <img src='/chill.svg' alt='sunglasses dude on lawn chair' style={{width: '100%', height: 'auto', maxWidth: '12rem'}}/>
           </div>
         )
       }
