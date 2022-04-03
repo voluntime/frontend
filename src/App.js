@@ -8,8 +8,8 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import React, { useCallback, useState } from 'react';
-import { Typography } from '@mui/material';
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
+import UpcomingBanner from './UpcomingBanner';
 
 function Feed() {
   const navigate = useNavigate();
@@ -19,6 +19,8 @@ function Feed() {
   return (
     <div classname="wrapper">
       <Stack alignItems={'center'}>
+
+        {/* HEADER */}
         <Stack className='feedHeader' direction={"row"}>
           <Stack direction={'row'} justifyContent={'center'} alignItems={'flex-end'} spacing={1}>
             <h2 style={{margin: 0}}>hello, </h2>
@@ -26,11 +28,15 @@ function Feed() {
           </Stack>
           <Avatar><Button onClick={handleClick}>H</Button></Avatar>
         </Stack>
-        <div className="events">
-          <Event />
-        </div>
-        <Stack className="addPost" direction={'row'}>
-          <Button onClick={AddPost}><AddBoxIcon sx={{width: '4rem', height: '4rem'}} /></Button>
+
+        {/* ACTUAL FEED */}
+        <Stack className='content'>
+          <div className="events">
+            <Event />
+          </div>
+          <Stack className="addPost" direction={'row'}>
+            <Button onClick={AddPost}><AddBoxIcon sx={{width: '4rem', height: '4rem'}} /></Button>
+          </Stack>
         </Stack>
       </Stack>
     </div>

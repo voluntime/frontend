@@ -97,9 +97,25 @@ p {
   margin: 2rem;
 }
 
+.content {
+  max-width: var(--content-width);
+}
+
+.upcomingBanner {
+  background-color: var(--granny-apple);
+}
+
+.upcomingBanner > * {
+  margin: 0.5rem;
+}
+
+.upcomingBanner svg {
+  margin-left: 1rem;
+  fill: var(--green);
+}
+
 .eventPost {
   margin: 2rem;
-  max-width: calc(var(--content-width) - 4rem);
 }
 
 .eventHeader {
