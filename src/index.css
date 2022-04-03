@@ -65,6 +65,13 @@ p {
   color: var(--dark-slate);
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
 
 /* UTILITY CLASSES */
 
@@ -73,7 +80,13 @@ p {
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   max-width: var(--content-width);
+  margin: auto;
+  min-height: 80vh;
 }
 
 .fullWidth {
