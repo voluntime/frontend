@@ -52,7 +52,9 @@ function MainFeed(props) {
       })
       .then((resp) => resp.json())
       .then((json) => {
-        setEvents(json);
+          let evts = json;
+          evts.sort(function(a, b) { return new Date(a.begins) - new Date(b.begins) })
+          setEvents(evts);
       });
   }, []);
 
