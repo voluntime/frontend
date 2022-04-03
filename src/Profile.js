@@ -11,7 +11,7 @@ function Profile() {
     const handleClick = useCallback(() => navigate('/', {replace : true}), [navigate]);
 
     return (
-        <div classname="wrapper">
+        <div className="wrapper">
         <Stack>
             <Stack direction={"row"}>
                 <Button onClick={handleClick}><DynamicFeedIcon /></Button>
@@ -19,9 +19,9 @@ function Profile() {
                 <p>Icon</p>
             </Stack>
             <p>Robin Baker</p>
-            <div classname="email"></div>
+            <div className="email"></div>
             <p>Super Volunteer</p>
-            <div classname="events">
+            <div className="events">
             <Event />
             </div>
         </Stack>

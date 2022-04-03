@@ -9,7 +9,7 @@ function Post() {
     const handleClick = useCallback(() => navigate('/', {replace : true}), [navigate]);
 
     return (
-        <div classname="wrapper">
+        <div className="wrapper">
             <Stack>
                 <Stack direction={"row"}>
                     <Button onClick={handleClick}><DynamicFeedIcon /></Button>

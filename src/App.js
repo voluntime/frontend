@@ -18,7 +18,7 @@ function Feed() {
   const AddPost = useCallback(() => navigate('/post', {replace : true}), [navigate]);
 
   return (
-    <div classname="wrapper">
+    <div className="wrapper">
       <Stack alignItems={'center'}>
         {/* HEADER */}
         <Stack className='feedHeader' direction={"row"}>

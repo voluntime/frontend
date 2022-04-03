@@ -13,7 +13,13 @@ async function loginUser(credentials) {
             },
             body: JSON.stringify(credentials)
     })
-    .then(data => data.status === 200)
+    .then(function(response) {
+        if(response.ok) {
+            return response.json();
+        } else {
+            return null;
+        }
+    })
 }
 
 function Menu({ setToken }) {
@@ -31,17 +37,17 @@ function Menu({ setToken }) {
             username,
             password
         });
-
         // Handle unsuccessful login
         if (!token) {
             setErrorMessage("Error: Unable to Login");
+        } else {
+            setToken(token);
         }
 
-        setToken(token);
     }
 
     return (
-        <div classname="wrapper">
+        <div className="wrapper">
             <div className="login-form">
                 <h2>login</h2>
                 <div className="form">
