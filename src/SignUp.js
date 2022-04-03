@@ -43,7 +43,7 @@ function SignUp ( {setToken} ) {
         if (!token) {
             setErrorMessage("Error: Unable to Sign Up!");
         }
-
+        // TODO fix reroute to main feed
         setToken(token);
     }
 

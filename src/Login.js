@@ -11,7 +11,8 @@ async function loginUser(credentials) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(credentials)
+            body: JSON.stringify(credentials),
+            credentials: "include"
     })
     .then(function(response) {
         if(response.ok) {
@@ -41,9 +42,9 @@ function Menu({ setToken }) {
         if (!token) {
             setErrorMessage("Error: Unable to Login");
         } else {
+            // TODO set local storage to user data to keep user logged in
             setToken(token);
         }
-
     }
 
     return (
