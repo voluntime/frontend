@@ -81,7 +81,8 @@ function EventButtons(props) {
             },
             body: JSON.stringify({
                 id: props.id
-            })
+            }),
+            credentials: "include"
         })
             .then((resp) => resp.json())
             .then((json) => {
