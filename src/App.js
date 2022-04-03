@@ -19,6 +19,21 @@ function Feed() {
   const handleClick = useCallback(() => navigate('/profile', {replace : true}), [navigate]);
   const AddPost = useCallback(() => navigate('/post', {replace : true}), [navigate]);
 
+  // Events for feed
+  const [events, setEvents] = useState([]);
+  useEffect(() => {
+      fetch("https://api.volunti.me/v1/posts?profile=trey_time", {
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then((resp) => resp.json())
+      .then((json) => {
+        setEvents(json);
+      });
+  }, []);
+
   return (
     <div className="wrapper">
       {/* HEADER */}
@@ -33,7 +48,19 @@ function Feed() {
       {/* ACTUAL FEED */}
       <Stack className='content'>
         <div className="events">
-          <Event />
+          {
+            events.length > 0
+            ?
+              events.map((e) => (
+                <Event {...e} />
+              ))
+            : (
+              <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                <p>No events to volunteer for! Time to chill.</p>
+                <img src='chill.svg' alt='sunglasses dude on lawn chair' style={{width: '100%', height: 'auto', maxWidth: '12rem'}}/>
+              </div>
+            )
+          }
         </div>
       </Stack>
 
