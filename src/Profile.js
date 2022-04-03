@@ -1,5 +1,4 @@
 import './Profile.css'
-import Event from "./Event";
 import { useNavigate, useParams } from "react-router-dom";
 import Badge from '@mui/material/Badge';
 import Stack from "@mui/material/Stack";
@@ -9,6 +8,7 @@ import Hand from '@mui/icons-material/PanTool';
 import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
 import LogoutIcon from '@mui/icons-material/Logout';
 import React, {useCallback, useEffect, useState} from "react";
+import Feed from './Feed';
 
 async function getReputation(username) {
     fetch("api.volunti.me/v1/reputation/" + username, {
@@ -55,21 +55,6 @@ function reputation(hands) {
 
 function Profile({ setToken }) {
   const navigate = useNavigate();
-  const [events, setEvents] = useState([]);
-  const { username } = useParams();
-
-  useEffect(() => {
-      fetch("https://api.volunti.me/v1/posts?profile=" + username, {
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-          .then((resp) => resp.json())
-          .then((json) => {
-            setEvents(json);
-          });
-  }, []);
 
   const feedClicked = useCallback(
     () => navigate("/", { replace: true }),
@@ -129,13 +114,7 @@ function Profile({ setToken }) {
 
         {/* EVENT FEED */}
         <Stack className='content'>
-          <div className="events">
-            {
-              events.map((e) => (
-                <Event {...e} />
-              ))
-            }
-          </div>
+          <Feed user={username} />
         </Stack>
       </Stack>
     </div>
