@@ -1,0 +1,49 @@
+@import url('colors.css');
+@import url('sizes.css');
+
+.eventPost {
+  margin: 2rem;
+}
+
+.eventHeader {
+  background-color: var(--yellow);
+  padding: 2rem;
+  border-top-left-radius: var(--bdr-rad-event);
+  border-top-right-radius: var(--bdr-rad-event);
+}
+
+.eventHeader > .avatar {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  margin-right: 1rem;
+  background-color: var(--ivory);
+  color: var(--dark-slate);
+}
+
+.eventPost > .description {
+  background-color: var(--ivory);
+  padding: 1rem 2rem;
+}
+
+.eventActions {
+  padding: 2rem;
+  background-color: var(--tea);
+  border-bottom-left-radius: var(--bdr-rad-event);
+  border-bottom-right-radius: var(--bdr-rad-event);
+}
+
+.eventActions button {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--granny-apple);
+  color: var(--green);
+  border-radius: var(--bdr-rad-button);
+}
+
+.progressCounter {
+  font-size: 1rem;
+  margin: 0.5rem 2rem;
+  color: var(--ivory);
+  position: absolute;
+  z-index: 1;
+}
