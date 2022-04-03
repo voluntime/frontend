@@ -12,7 +12,10 @@ async function signUpUser(credentials) {
     },
     body: JSON.stringify(credentials),
     credentials: "include",
-  }).then((data) => data.status === 201);
+  }).then((data) => data.json())
+      .then((json) => {
+        return json;
+      });
 }
 
 function SignUp({ setToken }) {
@@ -33,27 +36,29 @@ function SignUp({ setToken }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = await signUpUser({
-      username,
-      name,
-      email,
-      password,
-      zip,
-      organization,
-      bio,
-    });
+    let token;
+    try {
+      token = await signUpUser({
+        username,
+        name,
+        email,
+        password,
+        zip,
+        organization,
+        bio,
+      });
+    } catch (e) {
+      token = null;
+    }
 
     // Handle unsuccessful login
     if (!token) {
       setErrorMessage("Error: Unable to Sign Up!");
     }
-    // TODO fix reroute to main feed
+    console.log(token);
     setToken(token);
-
-    setTimeout(() => {
-      handleClick();
-      window.location.reload();
-    }, 500);
+    handleClick();
+    window.location.reload();
   };
 
   return (
