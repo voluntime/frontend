@@ -45,6 +45,7 @@
 
   --bdr-rad-event: 1.5rem;
   --bdr-rad-button: 0.5rem;
+  --avatar-size: 6rem;
   --content-width: 36rem;
 }
 
@@ -81,9 +82,23 @@ p {
   color: var(--dark-slate);
 }
 
+
+/* UTILITY CLASSES */
+
 .brown {
   color: var(--brown);
 }
+
+.content {
+  max-width: var(--content-width);
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+
+/* FEED */
 
 .feedHeader {
   max-width: var(--content-width);
@@ -94,14 +109,6 @@ p {
   position: sticky;
   top: 0;
   z-index: 1;
-}
-
-.feedHeader > *{
-  margin: 2rem;
-}
-
-.content {
-  max-width: var(--content-width);
 }
 
 .upcomingBanner {
@@ -117,6 +124,26 @@ p {
   fill: var(--green);
 }
 
+.addPost {
+  width: 100%;
+  justify-content: center;
+  position: sticky;
+  bottom: 0;
+  background-color: var(--white);
+}
+
+
+/* PROFILE PAGE */
+
+.profileHeader {
+  height: 10rem;
+  margin-bottom: 10rem;
+  background-color: var(--yellow);
+}
+
+
+/* EVENTS POSTS */
+
 .eventPost {
   margin: 2rem;
 }
@@ -129,8 +156,8 @@ p {
 }
 
 .eventHeader > .avatar {
-  width: 6rem;
-  height: 6rem;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
   margin-right: 1rem;
   background-color: var(--ivory);
   color: var(--dark-slate);
@@ -162,12 +189,4 @@ p {
   color: var(--ivory);
   position: absolute;
   z-index: 1;
-}
-
-.addPost {
-  width: 100%;
-  justify-content: center;
-  position: sticky;
-  bottom: 0;
-  background-color: var(--white);
 }
