@@ -1,5 +1,5 @@
 import './Profile.css'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Badge from '@mui/material/Badge';
 import Stack from "@mui/material/Stack";
 import Avatar from "@mui/material/Avatar";
@@ -9,6 +9,18 @@ import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
 import LogoutIcon from '@mui/icons-material/Logout';
 import React, {useCallback, useEffect, useState} from "react";
 import Feed from './Feed';
+
+function Verified({ username }) {
+    if (JSON.parse(localStorage.getItem("token")).verified) {
+        return (
+            <Badge badgeContent={'✓'} color="secondary">
+                <h3>{username}</h3>
+            </Badge>
+        );
+    } else {
+        return <h3>{username}</h3>;
+    }
+}
 
 function reputation(hands) {
   // 0 hands =  0 verified events
@@ -58,7 +70,6 @@ function Profile({ setToken }) {
   };
 
   let hands = 2; // TODO get from DB
-  let username = JSON.parse(localStorage.getItem("token")).username;
 
   return (
     <div className="wrapper">
@@ -80,9 +91,7 @@ function Profile({ setToken }) {
 
           {/* PROFILE INFORMATION */}
           <Avatar sx={{width: 'var(--avatar-size)', height: 'var(--avatar-size)'}}>{username[0]}</Avatar>
-          <Badge badgeContent={'✓'} color="secondary">
-            <h3>{username}</h3>
-          </Badge>
+          <Verified username={username}/>
           <div className="email"></div>
           {reputation(hands)}
         </Stack>

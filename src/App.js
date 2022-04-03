@@ -15,15 +15,16 @@ import UpcomingBanner from './UpcomingBanner';
 import Header from './Header';
 import Feed from './Feed';
 
-function MainFeed() {
+function MainFeed(props) {
+  const user = props.user || {};
   const navigate = useNavigate();
-  const handleClick = useCallback(() => navigate('/profile', {replace : true}), [navigate]);
+  const handleClick = useCallback(() => navigate('/profile/' + user.username, {replace : true}), [navigate]);
   const AddPost = useCallback(() => navigate('/post', {replace : true}), [navigate]);
 
   // Events for feed
   const [events, setEvents] = useState([]);
   useEffect(() => {
-      fetch("https://api.volunti.me/v1/posts?profile=trey_time", {
+      fetch("https://api.volunti.me/v1/posts", {
         credentials: "include",
         headers: {
           "Content-Type": "application/json"
@@ -41,9 +42,9 @@ function MainFeed() {
       <Header>
         <Stack direction={'row'} justifyContent={'center'} alignItems={'flex-end'} spacing={1}>
           <h2 style={{margin: 0}}>hello, </h2>
-          <h3 style={{marginBottom: '0.2rem'}}>Fix</h3>
+          <h3 style={{marginBottom: '0.2rem'}}>{user.name}</h3>
         </Stack>
-        <Avatar><Button onClick={handleClick}>Fix</Button></Avatar>
+        <Avatar><Button onClick={handleClick}>{user.name}</Button></Avatar>
       </Header>
 
       {/* ACTUAL FEED */}
@@ -79,8 +80,8 @@ function App() {
     <div className="wrapper">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<MainFeed/>} />
-          <Route path="/profile" element={<Profile setToken={setToken}/>} />
+          <Route path="/" element={<MainFeed user={token} />} />
+          <Route path="/profile/:username" element={<Profile setToken={setToken}/>} />
           <Route path="/post" element={<Post/>} />
           <Route path="/settings" element={<Settings/>}/>
           <Route path="*" element={<NotFound />}/>
