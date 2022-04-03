@@ -41,6 +41,7 @@ function reputation(hands) {
 
 function Profile({ setToken }) {
   const navigate = useNavigate();
+  const { username } = useParams();
 
   const [hands, setHands] = useState(0);
 
@@ -71,7 +72,6 @@ function Profile({ setToken }) {
     })
   };
 
-  let username = JSON.parse(localStorage.getItem("token")).username;
   let verified = JSON.parse(localStorage.getItem("token")).verified;
 
   useEffect(() => {
