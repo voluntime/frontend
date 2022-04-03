@@ -14,6 +14,10 @@ const theme = createTheme({
     type: 'light',
     primary: {
       main: '#0BAD44',
+      light: '#C7E9C0',
+    },
+    secondary: {
+      main: '#179CF0',
     },
   },
 });
