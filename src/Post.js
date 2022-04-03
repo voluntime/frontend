@@ -9,13 +9,12 @@ function Post() {
     const handleClick = useCallback(() => navigate('/', {replace : true}), [navigate]);
 
     return (
-        <div classname="wrapper">
+        <div className="wrapper">
             <Stack>
                 <Stack direction={"row"}>
                     <Button onClick={handleClick}><DynamicFeedIcon /></Button>
-                    <p>new event</p>
+                    <h2>new event</h2>
                 </Stack>
-                <p>personal info</p>
                 <div className="form">
                     <form>
                         <div className="input-container">
@@ -43,7 +42,6 @@ function Post() {
                         </div>
                     </form>
                 </div>
-                <p>event feed</p>
             </Stack>
         </div>
     );
