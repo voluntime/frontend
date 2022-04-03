@@ -11,20 +11,16 @@ import React, {useCallback, useEffect, useState} from "react";
 import Feed from './Feed';
 
 async function getReputation(username) {
-    fetch("api.volunti.me/v1/reputation/" + username, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }).then(function (response) {
-        if (response.ok) {
-            reputation(response.json.getItem("reputation"))
-        } else {
-          console.log("NO REPUTATION FOR YOU");
-        }
-      });
-    }
+  fetch("api.volunti.me/v1/reputation/" + username, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+  }).then((resp) => resp.json()).then(function (json) {
+    reputation(json.getItem("reputation"))
+  });
+}
 function Verified({ username }) {
     if (JSON.parse(localStorage.getItem("token")).verified) {
         return (
