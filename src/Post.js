@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
 import React, { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import Header from "./Header";
 
 function Post() {
   const [organization, setOrganization] = useState();
@@ -52,86 +53,67 @@ function Post() {
 
   return (
     <div className="wrapper">
-      <Stack>
-        <Stack direction={"row"}>
-          <Button onClick={handleSubmit}>
-            <DynamicFeedIcon />
-          </Button>
-          <h2>new event</h2>
-        </Stack>
-        <div className="form">
-          <form>
-            <div className="input-container">
-              <label>Title</label>
-              <input
-                type="text"
-                name="title"
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder=""
-              />
-            </div>
-            <div className="input-container">
-              <label>Event Location</label>
-              <input
-                type="text"
-                name="location"
-                onChange={(e) => setEventLocation(e.target.value)}
-                placeholder=""
-              />
-            </div>
-            <div className="input-container">
-              <label>Type</label>
-              <input
-                type="text"
-                name="type"
-                onChange={(e) => setType(e.target.value)}
-                placeholder=""
-              />
-            </div>
-            <div className="input-container">
-              <label>Volunteer Count</label>
-              <input
-                type="text"
-                name="count"
-                onChange={(e) => setvolunteerGoal(e.target.value)}
-                placeholder=""
-              />
-            </div>
-            <div className="input-container">
-              <label>Post Body</label>
-              <input
-                type="text"
-                name="desc"
-                onChange={(e) => setBody(e.target.value)}
-                placeholder=""
-              />
-            </div>
-            <div className="input-container">
-              <label>Begins At</label>
-              <input
-                type="datetime"
-                name="begins"
-                onChange={(e) => setBeginsAt(e.target.value)}
-                placeholder=""
-              />
-            </div>
-            <div className="input-container">
-              <label>Ends At</label>
-              <input
-                type="datetime"
-                name="ends"
-                onChange={(e) => setEndsAt(e.target.value)}
-                placeholder=""
-              />
-            </div>
-            <div className="button-container">
-              <Button type="submit" variant="contained" color="primary">
-                Post
-              </Button>
-            </div>
-          </form>
-        </div>
-      </Stack>
+      <Header>
+        <Button onClick={handleSubmit}>
+          <DynamicFeedIcon />
+        </Button>
+        <h2>new event</h2>
+      </Header>
+
+      <form className="form content">
+        <label>Title</label>
+        <input
+          type="text"
+          name="title"
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder=""
+        />
+        <label>Event Location</label>
+        <input
+          type="text"
+          name="location"
+          onChange={(e) => setEventLocation(e.target.value)}
+          placeholder=""
+        />
+        <label>Type</label>
+        <input
+          type="text"
+          name="type"
+          onChange={(e) => setType(e.target.value)}
+          placeholder=""
+        />
+        <label>Volunteer Count</label>
+        <input
+          type="text"
+          name="count"
+          onChange={(e) => setvolunteerGoal(e.target.value)}
+          placeholder=""
+        />
+        <label>Post Body</label>
+        <input
+          type="text"
+          name="desc"
+          onChange={(e) => setBody(e.target.value)}
+          placeholder=""
+        />
+        <label>Begins At</label>
+        <input
+          type="datetime"
+          name="begins"
+          onChange={(e) => setBeginsAt(e.target.value)}
+          placeholder=""
+        />
+        <label>Ends At</label>
+        <input
+          type="datetime"
+          name="ends"
+          onChange={(e) => setEndsAt(e.target.value)}
+          placeholder=""
+        />
+        <Button type="submit" variant="contained" color="primary">
+          Post
+        </Button>
+      </form>
     </div>
   );
 }
