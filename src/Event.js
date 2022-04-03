@@ -21,6 +21,8 @@ function EventHeader(props) {
     const location = props.event_location || "Placeholder";
     const dateTime = new Date(props.begins).toLocaleDateString() || "Placeholder";
     const duration = Math.abs(new Date(props.ends) - new Date(props.begins)) / 36e5 + " Hours" || "Placeholder";
+    const likes = props.likeCount;
+    const setLikeCount = props.setLikeCount;
 
     const handleAvatarClick = useCallback(() => navigate('/profile/' + organizer, {replace : true}), [navigate]);
 
@@ -51,6 +53,10 @@ function EventHeader(props) {
                     <TimerIcon className='brown'/>
                     <h4>{duration}</h4>
                 </Stack>
+                <Stack direction='row' spacing={1}>
+                    <UpArrow className='brown'/>
+                    <h4>{likes}</h4>
+                </Stack>
             </Stack>
         </Stack>
     );
@@ -79,7 +85,9 @@ function EventButtons(props) {
         volunteerCount,
         volunteerGoal,
         setVolunteerCount,
-        setVolunteerGoal
+        setVolunteerGoal,
+        likeCount,
+        setLikeCount
     } = props;
 
     const performInteraction = (type, setHandler) => {
@@ -102,6 +110,12 @@ function EventButtons(props) {
                         setVolunteerCount(volunteerCount + 1);
                     } else {
                         setVolunteerCount(volunteerCount - 1);
+                    }
+                } else {
+                    if (json.interaction) {
+                        setLikeCount(likeCount + 1);
+                    } else {
+                        setLikeCount(likeCount - 1);
                     }
                 }
 
@@ -135,16 +149,17 @@ function Event(props) {
     const eventId = props.id || -1;
 
     const [volunteerCount, setVolunteerCount] = useState(props.volunteers);
+    const [likeCount, setLikeCount] = useState(props.likes);
     const volunteerGoal = props.goal;
 
     return (
         <Stack className='eventPost'>
-            <EventHeader {...props} />
+            <EventHeader {...props} likeCount={likeCount} />
             <div className='description'>
                 <p>{eventDescription}</p>
             </div>
             <ProgressBar volunteerCount={volunteerCount} volunteerGoal={volunteerGoal} />
-            <EventButtons {...props} eventId={eventId} volunteerCount={volunteerCount} setVolunteerCount={setVolunteerCount} />
+            <EventButtons {...props} eventId={eventId} volunteerCount={volunteerCount} setVolunteerCount={setVolunteerCount} likeCount={likeCount} setLikeCount={setLikeCount}/>
         </Stack>
     );
 
