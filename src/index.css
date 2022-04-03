@@ -55,8 +55,8 @@ form {
   justify-content: center;
   align-items: center;
   max-width: var(--content-width);
-  margin: auto;
-  min-height: 80vh;
+  margin: 2rem auto;
+  min-height: 65vh;
 }
 
 .fullWidth {
@@ -75,19 +75,6 @@ form {
   position: sticky;
   top: 0;
   z-index: 1;
-}
-
-.upcomingBanner {
-  background-color: var(--granny-apple);
-}
-
-.upcomingBanner > * {
-  margin: 0.5rem;
-}
-
-.upcomingBanner svg {
-  margin-left: 1rem;
-  fill: var(--green);
 }
 
 .addPost {

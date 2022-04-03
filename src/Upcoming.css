@@ -1,0 +1,8 @@
+.upcomingBanner > * {
+  margin: 0.5rem;
+}
+
+.upcomingBanner svg {
+  margin-left: 1rem;
+  fill: var(--green);
+}

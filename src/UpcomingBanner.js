@@ -3,6 +3,7 @@
  * <UpcomingBanner date='April 1' name='Event Name' organizer={false}/>
  */
 
+import './Upcoming.css';
 import React, { useState } from 'react';
 import Stack from '@mui/material/Stack';
 import Hand from '@mui/icons-material/PanTool';

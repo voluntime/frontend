@@ -15,6 +15,26 @@ import UpcomingBanner from './UpcomingBanner';
 import Header from './Header';
 import Feed from './Feed';
 
+function GetUpcomingEvents(events, user) {
+  let ue = events.filter((e) => e.volunteered || e.organizer == user.username);
+  if (ue.length > 0) {
+    return (
+      <div class='upcomingGroup'>
+        <div class='upcomingTitle'><p>Upcoming Events</p></div>
+        {
+          ue.map((e) => (
+          <UpcomingBanner
+            date={new Date(e.begins).toLocaleDateString()}
+            name={e.title}
+            organizer={(e.organizer == user.username)}
+          />
+          ))
+        }
+      </div>
+    );
+  }
+}
+
 function MainFeed(props) {
   const user = props.user || {};
   const navigate = useNavigate();
@@ -51,16 +71,7 @@ function MainFeed(props) {
 
       {/* ACTUAL FEED */}
       <Stack className='content'>
-        {
-          events.filter((e) => e.volunteered || e.organizer == user.username)
-            .map((e) => (
-            <UpcomingBanner
-              date={new Date(e.begins).toLocaleDateString()}
-              name={e.title}
-              organizer={(e.organizer == user.username)}
-            />
-            ))
-        }
+        {GetUpcomingEvents(events, user)}
         <Feed user={null}/>
       </Stack>
 
