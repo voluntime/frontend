@@ -1,34 +1,4 @@
-@font-face {
-  font-family: 'Ubuntu';
-  src: url('./fonts/Ubuntu/Ubuntu-Regular.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Ubuntu';
-  src: url('./fonts/Ubuntu/Ubuntu-Medium.ttf');
-  font-weight: bold;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Ubuntu';
-  src: url('./fonts/Ubuntu/Ubuntu-Light.ttf');
-  font-weight: lighter;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Satisfy';
-  src: url('./fonts/Satisfy/Satisfy-Regular.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'LibreFranklin';
-  src: url('./fonts/Libre_Franklin/static/LibreFranklin-Regular.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
-
+@import url('fonts.css');
 @import url('colors.css');
 @import url('sizes.css');
 
