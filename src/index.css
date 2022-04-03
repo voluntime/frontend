@@ -1,53 +1,6 @@
-@font-face {
-  font-family: 'Ubuntu';
-  src: url('./fonts/Ubuntu/Ubuntu-Regular.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Ubuntu';
-  src: url('./fonts/Ubuntu/Ubuntu-Medium.ttf');
-  font-weight: bold;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Ubuntu';
-  src: url('./fonts/Ubuntu/Ubuntu-Light.ttf');
-  font-weight: lighter;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Satisfy';
-  src: url('./fonts/Satisfy/Satisfy-Regular.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'LibreFranklin';
-  src: url('./fonts/Libre_Franklin/static/LibreFranklin-Regular.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* https://coolors.co/2a4f53-799c8a-0bad44-94e7a6-c7e9c0-179cf0-de5e52-ba9746-ffd15d-fffef0 */
-:root {
-  --dark-slate: #2A4F53;
-  --morning: #799C8A;
-  --green: #0BAD44;
-  --granny-apple: #94E7A6;
-  --tea: #C7E9C0;
-  --blue: #179CF0;
-  --red: #DE5E52;
-  --yellow: #FFD15D;
-  --brown: #BA9746;
-  --ivory: #FFFEF0;
-  --white: #FFFFFF;
-
-  --bdr-rad-event: 1.5rem;
-  --bdr-rad-button: 0.5rem;
-  --avatar-size: 6rem;
-  --content-width: 36rem;
-}
+@import url('fonts.css');
+@import url('colors.css');
+@import url('sizes.css');
 
 * {
   font-family: 'Ubuntu', sans-serif;
@@ -82,6 +35,13 @@ p {
   color: var(--dark-slate);
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
 
 /* UTILITY CLASSES */
 
@@ -90,7 +50,13 @@ p {
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   max-width: var(--content-width);
+  margin: auto;
+  min-height: 80vh;
 }
 
 .fullWidth {
