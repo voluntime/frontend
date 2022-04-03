@@ -23,7 +23,7 @@ function Feed(props) {
   // Events for feed
   const [events, setEvents] = useState([]);
   useEffect(() => {
-      fetch("https://api.volunti.me/v1/posts?profile=trey_time", {
+      fetch("https://api.volunti.me/v1/posts", {
         credentials: "include",
         headers: {
           "Content-Type": "application/json"
