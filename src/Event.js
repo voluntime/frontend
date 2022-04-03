@@ -19,7 +19,7 @@ function EventHeader(props) {
     const organizer = props.organizer || "placeholder";
     const organization = props.organization || "Placeholder";
     const location = props.event_location || "Placeholder";
-    const dateTime = props.begins || "Placeholder";
+    const dateTime = new Date(props.begins).toLocaleDateString() || "Placeholder";
     const duration = Math.abs(new Date(props.ends) - new Date(props.begins)) / 36e5 + " Hours" || "Placeholder";
 
     const handleAvatarClick = useCallback(() => navigate('/profile/' + organizer, {replace : true}), [navigate]);

@@ -8,8 +8,8 @@
 }
 
 .headerContent {
-  width: 100%;
-  max-width: var(--content-width);
+  width: var(--content-width);
+  max-width: 90vw;
   justify-content: space-between;
   align-items: center;
 }

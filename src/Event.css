@@ -2,7 +2,9 @@
 @import url('sizes.css');
 
 .eventPost {
-  margin: 2rem;
+  margin: 2rem 0;
+  width: var(--content-width);
+  max-width: 90vw;
 }
 
 .eventHeader {
