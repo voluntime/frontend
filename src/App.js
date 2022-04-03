@@ -49,6 +49,16 @@ function MainFeed(props) {
 
       {/* ACTUAL FEED */}
       <Stack className='content'>
+        {
+          events.filter((e) => e.volunteered || e.organizer == user.username)
+            .map((e) => (
+            <UpcomingBanner
+              date={new Date(e.begins).toLocaleDateString()}
+              name={e.title}
+              organizer={(e.organizer == user.username)}
+            />
+            ))
+        }
         <Feed user={null}/>
       </Stack>
 
