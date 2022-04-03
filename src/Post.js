@@ -84,13 +84,14 @@ function Post() {
           required
         />
         <label>Type</label>
-        <input
-          type="text"
-          name="eventType"
-          onChange={(e) => setEventType(e.target.value)}
-          placeholder=""
-          required
-        />
+        <select
+            name={"eventType"}
+            onChange={(e) => setEventType(e.target.value)}
+            required
+        >
+          <option name={"Good"}>Good</option>
+          <option name={"Service"}>Service</option>
+        </select>
         <label>Volunteer Count</label>
         <input
           type="number"
