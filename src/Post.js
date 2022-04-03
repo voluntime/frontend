@@ -89,6 +89,7 @@ function Post() {
             onChange={(e) => setEventType(e.target.value)}
             required
         >
+          <option value="none" selected disabled hidden>Select an Option</option>
           <option name={"Good"}>Good</option>
           <option name={"Service"}>Service</option>
         </select>
