@@ -9,7 +9,7 @@ import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import AddBoxIcon from '@mui/icons-material/AddBox';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import UpcomingBanner from './UpcomingBanner';
 import Header from './Header';
@@ -47,14 +47,18 @@ function Feed() {
 
 function App() {
   // TODO init state to localstorage if exists
-  const [token, setToken] = useState();
-  const [user, setUser] = useState()
-
-  if (!localStorage.getItem('username')) {
-    if (!token) {
-      return <Login setToken={setToken} />
+  const [token, setToken] = useState(
+    () => {
+      return JSON.parse(localStorage.getItem("token"));
     }
-    localStorage.setItem('username', token.username);
+  );
+
+  useEffect(() => {
+    localStorage.setItem("token", JSON.stringify(token));
+  }, [token]);
+
+  if (!token) {
+    return <Login setToken={setToken} />
   }
 
   console.log(token);

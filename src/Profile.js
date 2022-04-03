@@ -26,7 +26,7 @@ function reputation(hands) {
   );
 }
 
-function Profile({setToken}) {
+function Profile({ setToken }) {
   const navigate = useNavigate();
   const [events, setEvents] = useState([]);
 
@@ -60,6 +60,8 @@ function Profile({setToken}) {
     .then(function(response) {
       if(response.ok) {
         setToken(null);
+        feedClicked();
+        window.location.reload();
         console.log('logout successful');
       } else {
         console.log('error logging out');
