@@ -1,7 +1,7 @@
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
-import React, { useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import {useNavigate} from 'react-router-dom';
 
 function Post() {
@@ -18,7 +18,7 @@ function Post() {
 
     const navigate = useNavigate();
     const backToFeed = useCallback(() => navigate('/', {replace : true}), [navigate]);
-    const submitForm = async (postDetails) {
+    const submitForm = async (postDetails) => {
         fetch("https://api.volunti.me/v1/post", {
             method: 'POST',
             headers: {
@@ -45,7 +45,7 @@ function Post() {
             volunteerGoal,
             beginsAt,
             endsAt,
-        })
+        });
     }
 
     return (
