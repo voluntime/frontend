@@ -32,7 +32,7 @@ function Profile({ setToken }) {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-      fetch("https://api.volunti.me/v1/posts?profile=trey_time", {
+      fetch("https://api.volunti.me/v1/posts?profile=" + username, {
         credentials: "include",
         headers: {
           "Content-Type": "application/json"
@@ -72,6 +72,7 @@ function Profile({ setToken }) {
   };
 
   let hands = 2; // TODO get from DB
+  let username = JSON.parse(localStorage.getItem("token")).username;
 
   return (
     <div className="wrapper">
@@ -92,9 +93,9 @@ function Profile({ setToken }) {
           </Stack>
 
           {/* PROFILE INFORMATION */}
-          <Avatar sx={{width: 'var(--avatar-size)', height: 'var(--avatar-size)'}}>H</Avatar>
+          <Avatar sx={{width: 'var(--avatar-size)', height: 'var(--avatar-size)'}}>{username[0]}</Avatar>
           <Badge badgeContent={'✓'} color="secondary">
-            <h3>Robin Baker</h3>
+            <h3>{username}</h3>
           </Badge>
           <div className="email"></div>
           {reputation(hands)}

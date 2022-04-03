@@ -69,13 +69,54 @@ function ProgressBar () {
     );
 }
 
-function EventButtons() {
+function EventButtons(props) {
+    const [liked, setLike] = useState(props.liked);
+    const [volunteered, setVolunteer] = useState(props.volunteered);
+
+    const performInteraction = (type, setHandler) => {
+        const options = {
+            id: props.eventId
+        };
+
+        fetch("https://api.volunti.me/v1/interaction/" + type, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(options),
+            credentials: "include"
+        })
+            .then((resp) => resp.json())
+            .then((json) => {
+               setHandler(json.interaction);
+            })
+    };
+
+    const likeTapHandler = () => {
+        performInteraction("like", setLike);
+    };
+
+    const volunteerTapHandler = () => {
+        performInteraction("volunteer", setVolunteer);
+    };
+
+    console.log(volunteered, liked);
+
     return (
         <Stack direction={'row'} spacing={2} justifyContent='center' alignItems='center' className='eventActions'>
-            <Button>
+            <Button onClick={() => likeTapHandler()} sx={{
+                backgroundColor: liked ? "var(--green)" : "var(--granny-apple)",
+                color: !liked ? "var(--green)" : "var(--granny-apple)",
+            }}>
                 <UpArrow sx={{ marginRight: '0.5rem' }}/> Like
             </Button>
-            <Button onClick={ProgressBar.changeWidth}>
+
+            <Button onClick={() => volunteerTapHandler()} sx={{
+                backgroundColor: volunteered ? "var(--green)" : "var(--granny-apple)",
+                color: !volunteered ? "var(--green)" : "var(--granny-apple)",
+            }}
+
+            >
                 <Hand sx={{ marginRight: '0.5rem' }}/> Volunteer
             </Button>
         </Stack>
@@ -83,7 +124,9 @@ function EventButtons() {
 }
 
 function Event(props) {
+    console.log(props);
     const eventDescription = props.body || "";
+    const eventId = props.id || -1;
 
     return (
         <Stack className='eventPost'>
@@ -92,7 +135,7 @@ function Event(props) {
                 <p>{eventDescription}</p>
             </div>
             <ProgressBar {...props} />
-            <EventButtons {...props} />
+            <EventButtons {...props} eventId={eventId} />
         </Stack>
     );
 
