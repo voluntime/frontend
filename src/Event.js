@@ -56,19 +56,14 @@ function EventHeader(props) {
     );
 }
 
-function ProgressBar () {
-    // TODO get from db
-    const [volunteerCount, setVolunteerCount] = React.useState(0);
+function ProgressBar ({ volunteerCount, volunteerGoal }) {
 
-    // TODO get from db
-    const [volunteerTarget, setVolunteerTarget] = React.useState(5);
-
-    let progress = volunteerCount / volunteerTarget;
+    let progress = volunteerCount / volunteerGoal;
 
     return (
         <div>
             <div className='progressCounter'>
-                {volunteerCount} / {volunteerTarget}
+                {volunteerCount} / {volunteerGoal}
             </div>
             <LinearProgress variant="determinate" value={progress} sx={{height: '2.5rem'}}/>
         </div>
@@ -78,6 +73,13 @@ function ProgressBar () {
 function EventButtons(props) {
     const [liked, setLike] = useState(props.liked || true);
     const [volunteered, setVolunteer] = useState(props.volunteered || false);
+
+    const {
+        volunteerCount,
+        volunteerGoal,
+        setVolunteerCount,
+        setVolunteerGoal
+    } = props;
 
     const performInteraction = (type, setHandler) => {
         const options = {
@@ -94,6 +96,14 @@ function EventButtons(props) {
         })
             .then((resp) => resp.json())
             .then((json) => {
+                if (type === "volunteer") {
+                    if (json.interaction) {
+                        setVolunteerCount(volunteerCount + 1);
+                    } else {
+                        setVolunteerCount(volunteerCount - 1);
+                    }
+                }
+
                setHandler(json.interaction);
             })
     };
@@ -123,14 +133,17 @@ function Event(props) {
     const eventDescription = props.body || "";
     const eventId = props.id || -1;
 
+    const [volunteerCount, setVolunteerCount] = useState(props.volunteers);
+    const volunteerGoal = props.goal;
+
     return (
         <Stack className='eventPost'>
             <EventHeader {...props} />
             <div className='description'>
                 <p>{eventDescription}</p>
             </div>
-            <ProgressBar {...props} />
-            <EventButtons {...props} eventId={eventId} />
+            <ProgressBar volunteerCount={volunteerCount} volunteerGoal={volunteerGoal} />
+            <EventButtons {...props} eventId={eventId} volunteerCount={volunteerCount} setVolunteerCount={setVolunteerCount} />
         </Stack>
     );
 
