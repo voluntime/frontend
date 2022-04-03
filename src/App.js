@@ -8,7 +8,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import React, { useCallback, useState } from 'react';
-import { Typography } from '@mui/material';
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 
 function Feed() {
@@ -20,9 +19,9 @@ function Feed() {
     <div classname="wrapper">
       <Stack>
         <Stack direction={"row"}>
-          <Typography variant="h2">hello</Typography>
+          <h2>hello, </h2>
           <p>Robin Baker</p>
-          <Avatar><Button onClick={handleClick}>H</Button></Avatar>
+          <Avatar><Button onClick={handleClick}>RB</Button></Avatar>
         </Stack>
         <div classname="events">
           <Event />
@@ -36,11 +35,11 @@ function Feed() {
 }
 
 function App() {
-  // const [token, setToken] = useState();
+  const [token, setToken] = useState();
 
-  // if(!token) {
-  //   return <Login setToken={setToken} />
-  // }
+  if (!token) {
+    return <Login setToken={setToken} />
+  }
 
   return (
     <div className="wrapper">

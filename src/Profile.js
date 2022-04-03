@@ -14,9 +14,9 @@ function Profile() {
         <div classname="wrapper">
         <Stack>
             <Stack direction={"row"}>
-            <Button onClick={handleClick}><DynamicFeedIcon /></Button>
-            <Avatar sx={{ width: 50, height: 50}}>H</Avatar>
-            <p>Icon</p>
+                <Button onClick={handleClick}><DynamicFeedIcon /></Button>
+                <Avatar sx={{ width: 50, height: 50}}>H</Avatar>
+                <p>Icon</p>
             </Stack>
             <p>Robin Baker</p>
             <div classname="email"></div>
