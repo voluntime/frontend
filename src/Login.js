@@ -41,9 +41,9 @@ function Menu({ setToken }) {
         if (!token) {
             setErrorMessage("Error: Unable to Login");
         } else {
+            // TODO set local storage to user data to keep user logged in
             setToken(token);
         }
-
     }
 
     return (
