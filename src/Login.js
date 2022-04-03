@@ -1,5 +1,6 @@
 import Button from '@mui/material/Button';
 import SignUp from './SignUp';
+import NotFound from './NotFound';
 import history from './history';
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
@@ -11,8 +12,7 @@ async function loginUser(credentials) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(credentials),
-            credentials: "include"
+            body: JSON.stringify(credentials)
     })
     .then(function(response) {
         if(response.ok) {
@@ -81,6 +81,7 @@ function Login({ setToken }) {
             <Routes>
                 <Route path="/" element={<Menu setToken={setToken} />}/>
                 <Route path="/signup" element={<SignUp setToken={setToken}/>}/>
+                <Route path="*" element={<NotFound />}/>
             </Routes>
       </BrowserRouter>
     );

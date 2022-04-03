@@ -3,6 +3,7 @@ import Login from './Login';
 import Event from './Event';
 import Profile from './Profile';
 import Post from './Post';
+import NotFound from './NotFound';
 import Settings from './Settings'
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
@@ -59,6 +60,7 @@ function App() {
           <Route path="/profile" element={<Profile/>} />
           <Route path="/post" element={<Post/>} />
           <Route path="/settings" element={<Settings/>}/>
+          <Route path="*" element={<NotFound />}/>
         </Routes>
       </BrowserRouter>
     </div>
