@@ -44,7 +44,7 @@ function MainFeed(props) {
           <h2 style={{margin: 0}}>hello, </h2>
           <h3 style={{marginBottom: '0.2rem'}}>{user.name}</h3>
         </Stack>
-        <Avatar><Button onClick={handleClick}>{user.name}</Button></Avatar>
+        <Avatar sx={{backgroundColor: 'var(--ivory)'}}><Button onClick={handleClick} sx={{color: 'var(--dark-slate)'}}>{user.name[0] || ""}</Button></Avatar>
       </Header>
 
       {/* ACTUAL FEED */}
