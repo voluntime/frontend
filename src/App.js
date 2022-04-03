@@ -3,6 +3,7 @@ import Login from './Login';
 import Event from './Event';
 import Profile from './Profile';
 import Post from './Post';
+import Settings from './Settings'
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -13,8 +14,8 @@ import UpcomingBanner from './UpcomingBanner';
 
 function Feed() {
   const navigate = useNavigate();
-  const handleClick = useCallback(() => navigate('/Profile', {replace : true}), [navigate]);
-  const AddPost = useCallback(() => navigate('/Post', {replace : true}), [navigate]);
+  const handleClick = useCallback(() => navigate('/profile', {replace : true}), [navigate]);
+  const AddPost = useCallback(() => navigate('/post', {replace : true}), [navigate]);
 
   return (
     <div classname="wrapper">
@@ -55,7 +56,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Feed/>} />
           <Route path="/profile" element={<Profile/>} />
-          <Route path="/Post" element={<Post/>} />
+          <Route path="/post" element={<Post/>} />
+          <Route path="/settings" element={<Settings/>}/>
         </Routes>
       </BrowserRouter>
     </div>

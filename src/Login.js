@@ -59,7 +59,7 @@ function Menu({ setToken }) {
                             <Button type="submit" variant="contained" color="primary">Login</Button>
                         </div>
                         <div className="button-container">
-                            <Button variant="contained" color="secondary" onClick={handleClick}>Sign Up</Button>
+                            <p>Don't have an account? <Button onClick={handleClick}>Sign Up</Button></p>
                         </div>
                     </form>
                 </div>

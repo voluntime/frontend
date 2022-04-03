@@ -53,10 +53,10 @@ function SignUp ( {setToken} ) {
                 <h2>sign up</h2>
                 <div className="form">
                     <form onSubmit={handleSubmit}>
-                        <div classname="input-container" id="username">
+                        <div className="input-container" id="username">
                             <input type="text" name="uname" placeholder="username" required onChange={e => setUserName(e.target.value)}/>
                         </div>
-                        <div classname="input-container">
+                        <div className="input-container">
                             <input type="text" name="name" placeholder="full name" required onChange={e => setName(e.target.value)}/>
                         </div>
                         <div className="input-container">
