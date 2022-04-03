@@ -83,7 +83,6 @@ function Profile({ setToken }) {
           credentials: "include",
       }).then((resp) => resp.json()).then(function (json) {
           let rep = json["reputation"];
-          rep = 3;
           let hands = 0;
 
           if (rep === 1) {
