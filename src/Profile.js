@@ -10,6 +10,22 @@ import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
 import LogoutIcon from '@mui/icons-material/Logout';
 import React, {useCallback, useEffect, useState} from "react";
 
+async function getReputation(username) {
+    fetch("api.volunti.me/v1/reputation/" + username, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }).then(function (response) {
+        if (response.ok) {
+            reputation(response.json.getItem("reputation"))
+        } else {
+          console.log("NO REPUTATION FOR YOU");
+        }
+      });
+}
+
 function reputation(hands) {
   // 0 hands =  0 verified events
   // 1 hands =  1 verified event
@@ -73,6 +89,7 @@ function Profile({ setToken }) {
 
   let hands = 2; // TODO get from DB
   let username = JSON.parse(localStorage.getItem("token")).username;
+  getReputation(username);
 
   return (
     <div className="wrapper">
