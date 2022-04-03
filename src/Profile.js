@@ -8,6 +8,7 @@ import Hand from '@mui/icons-material/PanTool';
 import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
 import LogoutIcon from '@mui/icons-material/Logout';
 import React, { useCallback } from "react";
+import App from "./App";
 
 function reputation(hands) {
   // 0 hands =  0 verified events
@@ -26,12 +27,9 @@ function reputation(hands) {
   );
 }
 
-function Profile({setToken}) {
+function Profile({ setToken }) {
   const navigate = useNavigate();
-  const feedClicked = useCallback(
-    () => navigate("/", { replace: true }),
-    [navigate]
-  );
+  const feedClicked = useCallback(() => navigate("/", { replace: true }),[navigate]);
   const logoutClicked = async () => {
     console.log('logout pressed');
     fetch("https://api.volunti.me/v1/logout", {
@@ -44,6 +42,8 @@ function Profile({setToken}) {
     .then(function(response) {
       if(response.ok) {
         setToken(null);
+        feedClicked();
+        window.location.reload();
         console.log('logout successful');
       } else {
         console.log('error logging out');
