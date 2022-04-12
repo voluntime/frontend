@@ -3,7 +3,6 @@ import React, { useState, useCallback } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import LinearProgress from '@mui/material/LinearProgress';
-// import Icon from '@mui/material/Icon';
 import Button from '@mui/material/Button';
 import UpArrow from '@mui/icons-material/ArrowUpward';
 import Hand from '@mui/icons-material/PanTool';
@@ -12,6 +11,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import TimerIcon from '@mui/icons-material/Timer';
 import {useNavigate} from "react-router-dom";
 import CorporateFareIcon from '@mui/icons-material/CorporateFare';
+import { API_BASE_URL, API_VERSION } from "./Config";
 
 function EventHeader(props) {
     const navigate = useNavigate();
@@ -95,7 +95,7 @@ function EventButtons(props) {
             id: props.eventId
         };
 
-        fetch("https://api.volunti.me/v1/interaction/" + type, {
+        fetch(`${API_BASE_URL}/${API_VERSION}/interaction/${type}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

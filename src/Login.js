@@ -7,9 +7,10 @@ import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import Header from "./Header.js";
+import { API_BASE_URL, API_VERSION } from "./Config";
 
 async function loginUser(credentials) {
-  return fetch("https://api.volunti.me/v1/login", {
+  return fetch(`${API_BASE_URL}/${API_VERSION}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -9,6 +9,7 @@ import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
 import LogoutIcon from '@mui/icons-material/Logout';
 import React, {useCallback, useEffect, useState} from "react";
 import Feed from './Feed';
+import { API_BASE_URL, API_VERSION } from "./Config";
 
 function Verified({ username, verified }) {
     if (verified) {
@@ -51,8 +52,7 @@ function Profile({ setToken }) {
   );
 
   const logoutClicked = async () => {
-    console.log('logout pressed');
-    fetch("https://api.volunti.me/v1/logout", {
+    fetch(`${API_BASE_URL}/${API_VERSION}/logout`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -75,7 +75,7 @@ function Profile({ setToken }) {
   let verified = JSON.parse(localStorage.getItem("token")).verified;
 
   useEffect(() => {
-      fetch("https://api.volunti.me/v1/reputation/" + username, {
+      fetch(`${API_BASE_URL}/${API_VERSION}/reputation/${username}`, {
           method: "GET",
           headers: {
               "Content-Type": "application/json",

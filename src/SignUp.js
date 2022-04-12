@@ -3,9 +3,10 @@ import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
+import { API_BASE_URL, API_VERSION } from "./Config";
 
 async function signUpUser(credentials) {
-  return fetch("https://api.volunti.me/v1/signup", {
+  return fetch(`${API_BASE_URL}/${API_VERSION}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -55,7 +56,6 @@ function SignUp({ setToken }) {
     if (!token) {
       setErrorMessage("Error: Unable to Sign Up!");
     }
-    console.log(token);
     setToken(token);
     handleClick();
     window.location.reload();

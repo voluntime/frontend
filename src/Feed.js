@@ -1,11 +1,14 @@
 import React, {useCallback, useEffect, useState} from "react";
 import Event from "./Event";
+import { API_BASE_URL, API_VERSION } from "./Config";
 
 function Feed(props) {
-  let url = 'https://api.volunti.me/v1/posts';
+  let url = `${API_BASE_URL}/${API_VERSION}/posts`;
+
   if (props.user) {
     url += '?profile=' + props.user;
   }
+
   const [events, setEvents] = useState([]);
   useEffect(() => {
       fetch(url, {

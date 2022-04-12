@@ -15,6 +15,8 @@ import UpcomingBanner from './UpcomingBanner';
 import Header from './Header';
 import Feed from './Feed';
 
+import { API_BASE_URL, API_VERSION } from "./Config";
+
 function GetUpcomingEvents(events, user) {
   let ue = events.filter((e) => e.volunteered || e.organizer == user.username);
   if (ue.length > 0) {
@@ -45,7 +47,7 @@ function MainFeed(props) {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-      fetch("https://api.volunti.me/v1/posts", {
+      fetch(`${API_BASE_URL}/${API_VERSION}/posts`, {
         credentials: "include",
         headers: {
           "Content-Type": "application/json"

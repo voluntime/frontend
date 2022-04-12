@@ -4,6 +4,7 @@ import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
 import React, { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
+import { API_BASE_URL, API_VERSION } from "./Config";
 
 function Post() {
   const [organization, setOrganization] = useState('');
@@ -22,7 +23,7 @@ function Post() {
     [navigate]
   );
   const submitForm = async (postDetails) => {
-    fetch("https://api.volunti.me/v1/post", {
+    fetch(`${API_BASE_URL}/${API_VERSION}/post`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
