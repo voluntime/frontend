@@ -10,32 +10,53 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import React, {useCallback, useEffect, useState} from "react";
 import Feed from './Feed';
 import { API_BASE_URL, API_VERSION } from "./Config";
+import { Typography } from '@mui/material';
+import CorporateFare from '@mui/icons-material/CorporateFare';
 
-function Verified({ username, verified }) {
-    if (verified) {
-        return (
-            <Badge badgeContent={'✓'} color="secondary">
-                <h3>{username}</h3>
-            </Badge>
-        );
-    } else {
-        return <h3>{username}</h3>;
-    }
-}
 
-function reputation(hands) {
+function ProfileDetails({ bio, hands, name, organization }) {
+
   // 0 hands =  0 verified events
   // 1 hands =  1 verified event
   // 2 hands =  5 verified event
   // 3 hands = 10 verified event
+
   let h1 = hands >= 1 ? 'color: var(--green)' : 'color: var(--tea)';
   let h2 = hands >= 2 ? 'color: var(--green)' : 'color: var(--tea)';
   let h3 = hands >= 3 ? 'color: var(--green)' : 'color: var(--tea)';
+
+
   return (
-    <Stack direction={'row'} spacing={1} width='100%' justifyContent='center' paddingTop='1rem'>
-      <Hand sx={h1}/>
-      <Hand sx={h2}/>
-      <Hand sx={h3}/>
+    <Stack
+      alignItems={"center"}
+      spacing={2}
+    >
+      <Stack
+        direction={'row'}
+        spacing={1}
+      >
+        <Hand sx={h1} />
+        <Hand sx={h2} />
+        <Hand sx={h3} />
+      </Stack>
+
+      <Typography variant="h5">
+        {name}
+      </Typography>
+
+      {organization && 
+      <Stack direction='row' spacing={1}>
+        <CorporateFare className='brown'/>
+
+        <Typography>
+          {organization}
+        </Typography> 
+      </Stack>
+      }
+
+      <Typography variant="body1">
+        {bio}
+      </Typography>
     </Stack>
   );
 }
@@ -105,10 +126,12 @@ function Profile({ setToken }) {
 
           {/* NAVIGATION BUTTONS */}
           <Stack direction={"row"} justifyContent='space-between' sx={{width: '100%', maxWidth: 'var(--content-width)'}}>
+
             {/* FEED */}
             <Button onClick={feedClicked} sx={{margin: '2rem'}}>
               <DynamicFeedIcon className="brown" sx={{width: '3rem', height: '3rem'}}/>
             </Button>
+
             {/* SETTINGS */}
             <Button onClick={logoutClicked} sx={{margin: '2rem'}}>
               <LogoutIcon className="brown" sx={{width: '3rem', height: '3rem'}}/>
@@ -117,9 +140,8 @@ function Profile({ setToken }) {
 
           {/* PROFILE INFORMATION */}
           <Avatar sx={{width: 'var(--avatar-size)', height: 'var(--avatar-size)'}}>{username[0]}</Avatar>
-          <Verified username={username} verfied={verified}/>
-          <div className="email"></div>
-          {reputation(hands)}
+          <ProfileDetails bio={"My bio!"} hands={2} name={username} organization={"Voluntime"} />
+
         </Stack>
 
         {/* EVENT FEED */}
