@@ -1,6 +1,5 @@
 import './App.css';
 import Login from './Login';
-import Event from './Event';
 import Profile from './Profile';
 import Post from './Post';
 import NotFound from './NotFound';
