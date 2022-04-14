@@ -11,7 +11,10 @@ COPY . .
 
 RUN yarn build
 
+CMD [ "yarn", "serve"]
 
-FROM nginx:stable-alpine
+#RUN yarn build
 
-COPY --from=build /usr/src/app/build/ /usr/share/nginx/html
+#FROM nginx:stable-alpine
+
+#COPY --from=build /usr/src/app/build/ /usr/share/nginx/html
