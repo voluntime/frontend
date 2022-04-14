@@ -11,32 +11,61 @@ import React, {useCallback, useEffect, useState} from "react";
 import Feed from './Feed';
 import Header from './Header';
 import { API_BASE_URL, API_VERSION } from "./Config";
+import { Box, Typography } from '@mui/material';
+import CorporateFare from '@mui/icons-material/CorporateFare';
 
-function Verified({ username, verified }) {
-    if (verified) {
-        return (
-            <Badge badgeContent={'✓'} color="secondary">
-                <h3>{username}</h3>
-            </Badge>
-        );
-    } else {
-        return <h3>{username}</h3>;
-    }
-}
 
-function reputation(hands) {
+function ProfileDetails({ bio, hands, name, organization }) {
+
   // 0 hands =  0 verified events
   // 1 hands =  1 verified event
   // 2 hands =  5 verified event
   // 3 hands = 10 verified event
+
   let h1 = hands >= 1 ? 'color: var(--green)' : 'color: var(--tea)';
   let h2 = hands >= 2 ? 'color: var(--green)' : 'color: var(--tea)';
   let h3 = hands >= 3 ? 'color: var(--green)' : 'color: var(--tea)';
+
   return (
-    <Stack direction={'row'} spacing={1} width='100%' justifyContent='center'>
-      <Hand sx={h1}/>
-      <Hand sx={h2}/>
-      <Hand sx={h3}/>
+    <Stack
+      alignItems={"center"}
+      spacing={2}
+      paddingTop={1}
+    >
+      <Stack
+        direction={'row'}
+        spacing={1}
+      >
+        <Hand sx={h1} />
+        <Hand sx={h2} />
+        <Hand sx={h3} />
+      </Stack>
+
+      {
+        name &&
+        <Typography variant="h5">
+          {name}
+        </Typography>
+      }
+
+      {
+        organization && 
+        <Stack direction='row' spacing={1}>
+          <CorporateFare className='brown'/>
+
+          <Typography>
+            {organization}
+          </Typography> 
+        </Stack>
+      }
+
+      {
+        name &&
+        <Typography variant="body1">
+          {bio}
+        </Typography>
+      }
+
     </Stack>
   );
 }
@@ -45,7 +74,7 @@ function Profile({ setToken }) {
   const navigate = useNavigate();
   const { username } = useParams();
 
-  const [hands, setHands] = useState(0);
+  const [user, setUser] = useState({});
 
   const feedClicked = useCallback(
     () => navigate("/", { replace: true }),
@@ -73,30 +102,17 @@ function Profile({ setToken }) {
     })
   };
 
-  let verified = JSON.parse(localStorage.getItem("token")).verified;
-
   useEffect(() => {
-      fetch(`${API_BASE_URL}/${API_VERSION}/reputation/${username}`, {
+      fetch(`${API_BASE_URL}/${API_VERSION}/user/${username}`, {
           method: "GET",
           headers: {
               "Content-Type": "application/json",
           },
           credentials: "include",
-      }).then((resp) => resp.json()).then(function (json) {
-          let rep = json["reputation"];
-          let hands = 0;
-
-          if (rep === 1) {
-              hands = 1;
-          } else if (rep > 5) {
-              hands = 2;
-          } else if (rep >= 10) {
-              hands = 3;
-          }
-
-          setHands(hands);
-      });
-  })
+      })
+        .then((resp) => resp.json())
+        .then((json) => setUser(json));
+  }, []);
 
   return (
     <div className="wrapper">
@@ -114,18 +130,28 @@ function Profile({ setToken }) {
           </Stack>
         </Header>
 
-        {/* PROFILE INFORMATION */}
-        <Stack className="profileInfo" alignItems={"center"} spacing={2}>
-          <Avatar sx={{ width: 'var(--avatar-size)', height: 'var(--avatar-size)' }}>{username[0]}</Avatar>
-          <Verified username={username} verfied={verified}/>
-          {reputation(hands)}
+          {/* PROFILE INFORMATION */}
+          <Stack
+            alignItems={"center"}
+            className={"profileInfo"}
+          >
+            <Badge
+              invisible={!user.verified}
+              badgeContent={<Typography color="white" variant="caption" children={"✓"} />}
+              color={"secondary"}
+              overlap={"circular"}
+            >
+              <Avatar sx={{width: 'var(--avatar-size)', height: 'var(--avatar-size)'}}>{username[0]}</Avatar>
+            </Badge>
+
+            <ProfileDetails bio={user.bio} hands={user.reputation} name={user.name} organization={user.organization} />
+          </Stack>
         </Stack>
 
         {/* EVENT FEED */}
         <Stack className='content'>
-          <Feed user={username} />
+          <Feed user={user.name} />
         </Stack>
-      </Stack>
     </div>
   );
 }
