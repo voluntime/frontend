@@ -25,7 +25,7 @@ function Feed(props) {
           });
   }, []);
   return (
-    <div className="events">
+    <div>
       {
         events.length > 0
         ?

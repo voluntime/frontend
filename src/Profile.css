@@ -1,7 +1,17 @@
 @import url('colors.css');
+@import url('sizes.css');
 
-.profileHeader {
-  height: 10rem;
-  margin-bottom: 8rem;
-  background-color: var(--yellow);
+.profileNavIcon {
+  width: var(--big-icon-size);
+  height: var(--big-icon-size);
+}
+
+.buttonContainer {
+  width: 100%;
+  max-width: var(--content-width);
+}
+
+.profileAvatar {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
 }

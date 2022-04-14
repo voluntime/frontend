@@ -9,6 +9,7 @@ import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
 import LogoutIcon from '@mui/icons-material/Logout';
 import React, {useCallback, useEffect, useState} from "react";
 import Feed from './Feed';
+import Header from './Header';
 import { API_BASE_URL, API_VERSION } from "./Config";
 import { Typography } from '@mui/material';
 import CorporateFare from '@mui/icons-material/CorporateFare';
@@ -117,22 +118,18 @@ function Profile({ setToken }) {
   return (
     <div className="wrapper">
       <Stack alignItems={'center'}>
-        {/* HEADER */}
-        <Stack className="profileHeader" alignItems={'center'} sx={{width: '100%'}}>
 
-          {/* NAVIGATION BUTTONS */}
-          <Stack direction={"row"} justifyContent='space-between' sx={{width: '100%', maxWidth: 'var(--content-width)'}}>
-
-            {/* FEED */}
-            <Button onClick={feedClicked} sx={{margin: '2rem'}}>
-              <DynamicFeedIcon className="brown" sx={{width: '3rem', height: '3rem'}}/>
+        {/* NAVIGATION BUTTONS */}
+        <Header>
+          <Stack className="buttonContainer" flexDirection={"row"} justifyContent={"space-between"} >
+            <Button onClick={feedClicked}>
+              <DynamicFeedIcon className="brown profileNavIcon" />
             </Button>
-
-            {/* SETTINGS */}
-            <Button onClick={logoutClicked} sx={{margin: '2rem'}}>
-              <LogoutIcon className="brown" sx={{width: '3rem', height: '3rem'}}/>
+            <Button onClick={logoutClicked}>
+              <LogoutIcon className="brown profileNavIcon" />
             </Button>
           </Stack>
+        </Header>
 
           {/* PROFILE INFORMATION */}
           <Badge
@@ -152,7 +149,6 @@ function Profile({ setToken }) {
         <Stack className='content'>
           <Feed user={user.name} />
         </Stack>
-      </Stack>
     </div>
   );
 }

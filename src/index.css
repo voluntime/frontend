@@ -50,13 +50,13 @@ form {
 }
 
 .content {
+  margin: 0 auto 2rem;
+  max-width: var(--content-width);
+  min-height: 65vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: var(--content-width);
-  margin: 2rem auto;
-  min-height: 65vh;
 }
 
 .fullWidth {
@@ -78,9 +78,5 @@ form {
 }
 
 .addPost {
-  width: 100%;
-  justify-content: center;
-  position: sticky;
-  bottom: 0;
   background-color: var(--white);
 }

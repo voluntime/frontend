@@ -2,12 +2,11 @@
 @import url('sizes.css');
 
 .header {
-  background-color: var(--yellow);
+  width: 100%;
+  height: 4rem;
+  align-items: center;
   justify-content: center;
-  min-height: 4rem;
-  position: sticky;
-  top: 0;
-  z-index: 2;
+  background-color: var(--yellow);
 }
 
 .headerContent {
@@ -15,4 +14,9 @@
   max-width: 90vw;
   justify-content: space-between;
   align-items: center;
+  padding: 1rem;
+}
+
+.profileInfo {
+  transform: translateY(-2rem);
 }
