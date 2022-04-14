@@ -11,7 +11,7 @@ import React, {useCallback, useEffect, useState} from "react";
 import Feed from './Feed';
 import Header from './Header';
 import { API_BASE_URL, API_VERSION } from "./Config";
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import CorporateFare from '@mui/icons-material/CorporateFare';
 
 
@@ -25,7 +25,6 @@ function ProfileDetails({ bio, hands, name, organization }) {
   let h1 = hands >= 1 ? 'color: var(--green)' : 'color: var(--tea)';
   let h2 = hands >= 2 ? 'color: var(--green)' : 'color: var(--tea)';
   let h3 = hands >= 3 ? 'color: var(--green)' : 'color: var(--tea)';
-
 
   return (
     <Stack
@@ -132,17 +131,21 @@ function Profile({ setToken }) {
         </Header>
 
           {/* PROFILE INFORMATION */}
-          <Badge
-            invisible={!user.verified}
-            badgeContent={<Typography color="white" variant="caption" children={"✓"} />}
-            color={"secondary"}
-            overlap={"circular"}
+          <Stack
+            alignItems={"center"}
+            className={"profileInfo"}
           >
-            <Avatar sx={{width: 'var(--avatar-size)', height: 'var(--avatar-size)'}}>{username[0]}</Avatar>
-          </Badge>
+            <Badge
+              invisible={!user.verified}
+              badgeContent={<Typography color="white" variant="caption" children={"✓"} />}
+              color={"secondary"}
+              overlap={"circular"}
+            >
+              <Avatar sx={{width: 'var(--avatar-size)', height: 'var(--avatar-size)'}}>{username[0]}</Avatar>
+            </Badge>
 
-          <ProfileDetails bio={user.bio} hands={user.reputation} name={user.name} organization={user.organization} />
-
+            <ProfileDetails bio={user.bio} hands={user.reputation} name={user.name} organization={user.organization} />
+          </Stack>
         </Stack>
 
         {/* EVENT FEED */}
