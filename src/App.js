@@ -13,6 +13,7 @@ import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import UpcomingBanner from './UpcomingBanner';
 import Header from './Header';
 import Feed from './Feed';
+import Attendance from './Attendance';
 
 import { API_BASE_URL, API_VERSION } from "./Config";
 
@@ -109,6 +110,7 @@ function App() {
           <Route path="/profile/:username" element={<Profile setToken={setToken}/>} />
           <Route path="/post" element={<Post/>} />
           <Route path="/settings" element={<Settings/>}/>
+          <Route path="/attendance" element={<Attendance/>}/>
           <Route path="*" element={<NotFound />}/>
         </Routes>
       </BrowserRouter>
