@@ -9,6 +9,7 @@ import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
 import LogoutIcon from '@mui/icons-material/Logout';
 import React, {useCallback, useEffect, useState} from "react";
 import Feed from './Feed';
+import Header from './Header';
 import { API_BASE_URL, API_VERSION } from "./Config";
 
 function Verified({ username, verified }) {
@@ -32,7 +33,7 @@ function reputation(hands) {
   let h2 = hands >= 2 ? 'color: var(--green)' : 'color: var(--tea)';
   let h3 = hands >= 3 ? 'color: var(--green)' : 'color: var(--tea)';
   return (
-    <Stack direction={'row'} spacing={1} width='100%' justifyContent='center' paddingTop='1rem'>
+    <Stack direction={'row'} spacing={1} width='100%' justifyContent='center'>
       <Hand sx={h1}/>
       <Hand sx={h2}/>
       <Hand sx={h3}/>
@@ -100,25 +101,23 @@ function Profile({ setToken }) {
   return (
     <div className="wrapper">
       <Stack alignItems={'center'}>
-        {/* HEADER */}
-        <Stack className="profileHeader" alignItems={'center'} sx={{width: '100%'}}>
 
-          {/* NAVIGATION BUTTONS */}
-          <Stack direction={"row"} justifyContent='space-between' sx={{width: '100%', maxWidth: 'var(--content-width)'}}>
-            {/* FEED */}
-            <Button onClick={feedClicked} sx={{margin: '2rem'}}>
-              <DynamicFeedIcon className="brown" sx={{width: '3rem', height: '3rem'}}/>
+        {/* NAVIGATION BUTTONS */}
+        <Header>
+          <Stack className="buttonContainer" flexDirection={"row"} justifyContent={"space-between"} >
+            <Button onClick={feedClicked}>
+              <DynamicFeedIcon className="brown profileNavIcon" />
             </Button>
-            {/* SETTINGS */}
-            <Button onClick={logoutClicked} sx={{margin: '2rem'}}>
-              <LogoutIcon className="brown" sx={{width: '3rem', height: '3rem'}}/>
+            <Button onClick={logoutClicked}>
+              <LogoutIcon className="brown profileNavIcon" />
             </Button>
           </Stack>
+        </Header>
 
-          {/* PROFILE INFORMATION */}
-          <Avatar sx={{width: 'var(--avatar-size)', height: 'var(--avatar-size)'}}>{username[0]}</Avatar>
+        {/* PROFILE INFORMATION */}
+        <Stack className="profileInfo" alignItems={"center"} spacing={2}>
+          <Avatar sx={{ width: 'var(--avatar-size)', height: 'var(--avatar-size)' }}>{username[0]}</Avatar>
           <Verified username={username} verfied={verified}/>
-          <div className="email"></div>
           {reputation(hands)}
         </Stack>
 
