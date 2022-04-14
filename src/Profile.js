@@ -40,23 +40,31 @@ function ProfileDetails({ bio, hands, name, organization }) {
         <Hand sx={h3} />
       </Stack>
 
-      <Typography variant="h5">
-        {name}
-      </Typography>
-
-      {organization && 
-      <Stack direction='row' spacing={1}>
-        <CorporateFare className='brown'/>
-
-        <Typography>
-          {organization}
-        </Typography> 
-      </Stack>
+      {
+        name &&
+        <Typography variant="h5">
+          {name}
+        </Typography>
       }
 
-      <Typography variant="body1">
-        {bio}
-      </Typography>
+      {
+        organization && 
+        <Stack direction='row' spacing={1}>
+          <CorporateFare className='brown'/>
+
+          <Typography>
+            {organization}
+          </Typography> 
+        </Stack>
+      }
+
+      {
+        name &&
+        <Typography variant="body1">
+          {bio}
+        </Typography>
+      }
+
     </Stack>
   );
 }
@@ -65,7 +73,7 @@ function Profile({ setToken }) {
   const navigate = useNavigate();
   const { username } = useParams();
 
-  const [hands, setHands] = useState(0);
+  const [user, setUser] = useState();
 
   const feedClicked = useCallback(
     () => navigate("/", { replace: true }),
@@ -93,30 +101,17 @@ function Profile({ setToken }) {
     })
   };
 
-  let verified = JSON.parse(localStorage.getItem("token")).verified;
-
   useEffect(() => {
-      fetch(`${API_BASE_URL}/${API_VERSION}/reputation/${username}`, {
+      fetch(`${API_BASE_URL}/${API_VERSION}/user/${username}`, {
           method: "GET",
           headers: {
               "Content-Type": "application/json",
           },
           credentials: "include",
-      }).then((resp) => resp.json()).then(function (json) {
-          let rep = json["reputation"];
-          let hands = 0;
-
-          if (rep === 1) {
-              hands = 1;
-          } else if (rep > 5) {
-              hands = 2;
-          } else if (rep >= 10) {
-              hands = 3;
-          }
-
-          setHands(hands);
-      });
-  })
+      })
+        .then((resp) => resp.json())
+        .then((json) => setUser(json));
+  });
 
   return (
     <div className="wrapper">
@@ -140,13 +135,13 @@ function Profile({ setToken }) {
 
           {/* PROFILE INFORMATION */}
           <Avatar sx={{width: 'var(--avatar-size)', height: 'var(--avatar-size)'}}>{username[0]}</Avatar>
-          <ProfileDetails bio={"My bio!"} hands={2} name={username} organization={"Voluntime"} />
+          <ProfileDetails bio={user.bio} hands={user.reputation} name={user.name} organization={user.organization} />
 
         </Stack>
 
         {/* EVENT FEED */}
         <Stack className='content'>
-          <Feed user={username} />
+          <Feed user={user.name} />
         </Stack>
       </Stack>
     </div>
