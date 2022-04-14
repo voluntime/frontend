@@ -79,7 +79,7 @@ function MainFeed(props) {
       </Stack>
 
       {/* ADD NEW EVENT */}
-      <Stack className="addPost" direction={'row'}>
+      <Stack className="addPost" direction={"row"} width={"100%"} justifyContent={"center"} position={"fixed"} bottom={"0"}>
         <Button onClick={AddPost}><AddBoxIcon class='addIcon'/></Button>
       </Stack>
     </div>
