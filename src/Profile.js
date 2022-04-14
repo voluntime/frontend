@@ -30,6 +30,7 @@ function ProfileDetails({ bio, hands, name, organization }) {
     <Stack
       alignItems={"center"}
       spacing={2}
+      paddingTop={1}
     >
       <Stack
         direction={'row'}
@@ -73,7 +74,7 @@ function Profile({ setToken }) {
   const navigate = useNavigate();
   const { username } = useParams();
 
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({});
 
   const feedClicked = useCallback(
     () => navigate("/", { replace: true }),
@@ -111,7 +112,7 @@ function Profile({ setToken }) {
       })
         .then((resp) => resp.json())
         .then((json) => setUser(json));
-  });
+  }, []);
 
   return (
     <div className="wrapper">
@@ -134,7 +135,15 @@ function Profile({ setToken }) {
           </Stack>
 
           {/* PROFILE INFORMATION */}
-          <Avatar sx={{width: 'var(--avatar-size)', height: 'var(--avatar-size)'}}>{username[0]}</Avatar>
+          <Badge
+            invisible={!user.verified}
+            badgeContent={<Typography color="white" variant="caption" children={"✓"} />}
+            color={"secondary"}
+            overlap={"circular"}
+          >
+            <Avatar sx={{width: 'var(--avatar-size)', height: 'var(--avatar-size)'}}>{username[0]}</Avatar>
+          </Badge>
+
           <ProfileDetails bio={user.bio} hands={user.reputation} name={user.name} organization={user.organization} />
 
         </Stack>
