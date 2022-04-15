@@ -21,8 +21,8 @@ function GetUpcomingEvents(events, user) {
   let ue = events.filter((e) => e.volunteered || e.organizer == user.username);
   if (ue.length > 0) {
     return (
-      <div class='upcomingGroup'>
-        <div class='upcomingTitle'><p>Upcoming Events</p></div>
+      <div className='upcomingGroup'>
+        <div className='upcomingTitle'><p>Upcoming Events</p></div>
         {
           ue.map((e) => (
           <UpcomingBanner

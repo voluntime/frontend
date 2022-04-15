@@ -2,7 +2,7 @@
 @import url('colors.css');
 
 .upcomingGroup {
-  /* margin-top: 1rem; */
+  margin-top: 1.5rem;
   width: 100%;
   border-radius: var(--bdr-rad-button);
   background-color: var(--granny-apple);

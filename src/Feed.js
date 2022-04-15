@@ -33,9 +33,9 @@ function Feed(props) {
             <Event {...e} />
           ))
         : (
-          <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            <p>No events to volunteer for! Time to chill.</p>
-            <img src='/chill.svg' alt='sunglasses dude on lawn chair' style={{width: '100%', height: 'auto', maxWidth: '12rem'}}/>
+          <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'fixed', left: 'calc(50vw - 7rem)', top: 'calc(50vh - 6rem)', width: '14rem', height: '12rem'}}>
+            <p style={{textAlign: 'center'}}>No events to volunteer for!<br/>Time to chill.</p>
+            <img src='/chill.svg' alt='sunglasses dude on lawn chair' style={{width: '100%', height: 'auto', maxWidth: '10rem'}}/>
           </div>
         )
       }

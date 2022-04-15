@@ -52,10 +52,9 @@ form {
 .content {
   margin: 0 auto 2rem;
   max-width: var(--content-width);
-  min-height: 65vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 }
 
